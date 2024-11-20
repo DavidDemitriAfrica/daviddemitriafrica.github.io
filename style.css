@@ -1,3 +1,4 @@
+/* Center the entire page content while keeping text left-aligned */
 body {
     font-family: "Georgia", serif;
     background-color: #ffffff;
@@ -8,16 +9,16 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    line-height: 1.8;
 }
 
 .container {
-    text-align: left;
     max-width: 800px;
     margin: 0 auto;
-    padding: 10rem;
+    padding: 2rem;
+    text-align: left;
 }
 
+/* Title styling */
 h1 {
     text-align: center;
     font-size: 2rem;
@@ -25,6 +26,7 @@ h1 {
     margin-bottom: 1.5rem;
 }
 
+/* Paragraph and link styling */
 p {
     font-size: 1rem;
     margin-bottom: 1.2rem;
@@ -34,6 +36,7 @@ nav p {
     margin: 0.5rem 0;
 }
 
+/* Link styling */
 a {
     color: #0000EE;
     text-decoration: none;
