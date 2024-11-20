@@ -1,45 +1,41 @@
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #000;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            margin-top: 2rem;
-        }
-        h1 {
-            font-size: 2em;
-            margin-bottom: 1rem;
-        }
-        nav {
-            display: inline-block;
-            margin-bottom: 2rem;
-            padding: 0.5rem;
-            border: 1px solid #000;
-        }
-        nav a {
-            margin: 0 0.5rem;
-            color: #000;
-            text-decoration: none;
-        }
-        nav a:not(:last-child)::after {
-            content: "|";
-            margin-left: 0.5rem;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        p {
-            line-height: 1.6;
-        }
-        footer {
-            margin-top: 2rem;
-            font-size: 0.9em;
-            color: #666;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+header {
+    margin-top: 2rem;
+}
+h1 {
+    font-size: 1.5em; /* Smaller header */
+    margin-bottom: 1rem;
+}
+nav {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    border: 1px solid #000; /* Thin border box */
+}
+nav a {
+    margin: 0 0.5rem;
+    color: #000;
+    text-decoration: none;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+main {
+    max-width: 600px;
+    margin: 0 auto;
+}
+p {
+    line-height: 1.6;
+}
+footer {
+    margin-top: 2rem;
+    font-size: 0.9em;
+    color: #666;
+}
