@@ -4,38 +4,34 @@ body {
     color: #000000;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     line-height: 1.8;
 }
 
 .container {
+    text-align: left;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;    
-    padding: 0 1rem;
-    text-align: left;
-}
-
-header {
-    text-align: left;
-    margin-bottom: 2rem;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
 h1 {
+    text-align: center;
     font-size: 2rem;
     font-weight: bold;
-    margin: 0.5rem 0;
-}
-
-h2 {
-    font-size: 1.5rem;
-    margin: 1.5rem 0 1rem;
-    font-weight: normal;
+    margin-bottom: 1.5rem;
 }
 
 p {
-    text-align: left;
     font-size: 1rem;
     margin-bottom: 1.2rem;
+}
+
+nav p {
+    margin: 0.5rem 0;
 }
 
 a {
@@ -45,11 +41,4 @@ a {
 
 a:hover {
     text-decoration: underline;
-}
-
-footer {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 0.9rem;
-    color: #666666;
 }
