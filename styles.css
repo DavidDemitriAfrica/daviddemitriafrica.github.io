@@ -3,13 +3,12 @@ body {
     line-height: 1.4;
     font-size: 16px;
     padding: 0 10px;
-    margin: 50px;
+    margin: 50px auto;
     max-width: 650px;
 }
 
 #maincontent {
     max-width: 42em;
-    margin: 15 auto;
     margin-top: 70px;
 }
 
@@ -19,16 +18,6 @@ h1 {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
-}
-
-/* Paragraph and link styling */
-p {
-    font-size: 1rem;
-    margin-bottom: 1.2rem;
-}
-
-nav p {
-    margin: 0.5rem 0;
 }
 
 /* Link styling */
