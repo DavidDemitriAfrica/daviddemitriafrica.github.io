@@ -11,13 +11,6 @@ body {
     max-width: 42em;
 }
 
-/* Title styling */
-h1 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-}
 
 /* Link styling */
 a {
