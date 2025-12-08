@@ -1,24 +1,76 @@
-/* Center the entire page content while keeping text left-aligned */
+/* --- 1. Global Typography & Layout (The "Poetic" Vibe) --- */
 body {
-    line-height: 1.4;
-    font-size: 16px;
-    padding: 0 10px;
-    margin: 50px auto;
-    max-width: 650px;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #222;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #fcfcfc; /* Slight off-white is easier on eyes */
 }
 
-#maincontent {
-    max-width: 42em;
-    margin-top: 10px auto;
+/* This centers content on ALL pages */
+main {
+    max-width: 700px;
+    margin: 60px auto; /* Top/Bottom margin, Auto left/right centers it */
+    padding: 0 20px;
+    font-size: 1.15rem;
 }
 
-
-/* Link styling */
+/* --- 2. Links & Contact Lists --- */
 a {
-    color: #0000EE;
-    text-decoration: none;
+    color: #333;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 a:hover {
-    text-decoration: underline;
+    background-color: #efefef;
+    text-decoration: none;
+}
+
+.contact-info {
+    margin-top: 2rem;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    font-size: 0.95rem;
+}
+
+/* --- 3. The Telescopic Text Logic (Can be used on any page) --- */
+
+/* The expandable content is hidden by default */
+.content {
+    display: none;
+    opacity: 0;
+}
+
+/* The clickable word (trigger) */
+.trigger {
+    cursor: pointer;
+    border-bottom: 2px solid #b4b4b4;
+    color: #222;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+    margin: 0 2px;
+}
+
+.trigger:hover {
+    background-color: #e3e3e3;
+    color: #000;
+    border-bottom-color: #000;
+}
+
+/* When expanded: Hide trigger, Show content with fade-in */
+.expanded > .trigger {
+    display: none;
+}
+
+.expanded > .content {
+    display: inline;
+    animation: smoothFade 0.7s forwards;
+}
+
+@keyframes smoothFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
