@@ -4,12 +4,12 @@ title: "David Demitri Africa"
 ---
 
 <style>
-    /* Mimic the "poetic" look */
+    /* Mimic the "poetic" look of Alan Trotter's site */
     .telescopic-text {
         font-family: 'Georgia', 'Times New Roman', serif;
         font-size: 1.15rem;
         line-height: 1.6;
-        color: #222;
+        max-width: 700px;
     }
 
     /* The expandable content is hidden by default */
@@ -21,11 +21,11 @@ title: "David Demitri Africa"
     /* The clickable word (trigger) */
     .trigger {
         cursor: pointer;
-        border-bottom: 2px solid #b4b4b4;
+        border-bottom: 2px solid #b4b4b4; /* Thicker, softer underline */
         color: #222;
         font-weight: 600;
         transition: background 0.2s, color 0.2s;
-        margin: 0 1px;
+        margin: 0 2px;
     }
 
     .trigger:hover {
@@ -49,21 +49,12 @@ title: "David Demitri Africa"
         to { opacity: 1; }
     }
     
-    /* Contact list styling */
+    /* Contact list styling to match the vibe */
     .contact-info {
-        margin-top: 3rem;
+        margin-top: 2rem;
         border-top: 1px solid #eee;
         padding-top: 1rem;
         font-size: 0.95rem;
-    }
-
-    .contact-info ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .contact-info li {
-        margin-bottom: 0.5rem;
     }
 </style>
 
@@ -79,79 +70,50 @@ title: "David Demitri Africa"
                     <span class="content">
                         with the Alignment team at the UK AI Security Institute
                     </span>
-                </span>
+                </span>.
             </span>
-        </span>.
-        I 
+        </span>
+        I am also a 
         <span class="telescope">
-            <span class="trigger" onclick="expand(this)">studied</span>
-            <span class="content">
-                was a 
-                <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">student</span>
-                    <span class="content">
-                        Jardine Postgraduate Scholar
-                    </span>
-                </span>
-                at Cambridge
-            </span>
+            <span class="trigger" onclick="expand(this)">Scholar</span>
+            <span class="content">Jardine Postgraduate Cambridge Scholar</span>
         </span>.
     </p>
 
     <p>
-        I am interested in 
+        My work focuses on 
         <span class="telescope">
-            <span class="trigger" onclick="expand(this)">problems</span>
+            <span class="trigger" onclick="expand(this)">AI problems</span>
             <span class="content">
+                technical AI alignment, 
                 <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">AI</span>
-                    <span class="content">technical AI alignment</span>
-                </span>,
-                <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">language</span>
+                    <span class="trigger" onclick="expand(this)">NLP</span>
                     <span class="content">natural language processing</span>
                 </span>, 
-                and 
-                <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">behavior</span>
-                    <span class="content">collective behavior</span>
-                </span>
+                and collective behavior
             </span>
         </span>.
     </p>
 
     <p>
-        In a past life, I 
+        Outside of work, I 
         <span class="telescope">
-            <span class="trigger" onclick="expand(this)">argued</span>
+            <span class="trigger" onclick="expand(this)">stay active</span>
             <span class="content">
-                used to do competitive debate
-            </span>
-        </span>.
-        Now, I 
-        <span class="telescope">
-            <span class="trigger" onclick="expand(this)">move</span>
-            <span class="content">
-                am trying to get good at 
+                used to do competitive debate. Now I am trying to get good at 
                 <span class="telescope">
                     <span class="trigger" onclick="expand(this)">climbing</span>
                     <span class="content">
-                        climbing (current highest grade: V6)
+                        climbing (highest grade climbed: V6)
                     </span>
-                </span>
-            </span>
-        </span>.
-        My next 
-        <span class="telescope">
-            <span class="trigger" onclick="expand(this)">trip</span>
-            <span class="content">
-                planned hike is 
+                </span>.
+                My next planned hike is 
                 <span class="telescope">
                     <span class="trigger" onclick="expand(this)">a mountain</span>
                     <span class="content">Mt. Kabunian</span>
-                </span>
+                </span>.
             </span>
-        </span>.
+        </span>
     </p>
 
     <div class="contact-info">
