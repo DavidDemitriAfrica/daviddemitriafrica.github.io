@@ -1,24 +1,73 @@
-/* Center the entire page content while keeping text left-aligned */
+/* --- LAYOUT & ALIGNMENT --- */
+
+/* By applying the width/margin to 'body', we force the 
+   Header AND the Main Content to align flush left 
+   within the same centered column.
+*/
 body {
     line-height: 1.4;
     font-size: 16px;
-    padding: 0 10px;
-    margin: 50px auto;
-    max-width: 650px;
+    padding: 0 10px;    /* Adds padding to sides so text doesn't touch screen edges */
+    margin: 50px auto;  /* Centers the column on the screen */
+    max-width: 650px;   /* The width for BOTH header and text */
 }
 
-#maincontent {
-    max-width: 42em;
-    margin-top: 10px auto;
-}
-
-
-/* Link styling */
+/* Ensure links are styled correctly */
 a {
     color: #0000EE;
     text-decoration: none;
 }
-
 a:hover {
     text-decoration: underline;
+}
+
+/* --- TELESCOPIC TEXT STYLING --- */
+
+.telescopic-text {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.content {
+    display: none;
+    opacity: 0;
+}
+
+.trigger {
+    cursor: pointer;
+    border-bottom: 2px solid #b4b4b4;
+    color: #222;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+    
+    /* FIX: Set margin to 0 to remove space between word and punctuation */
+    margin: 0; 
+}
+
+.trigger:hover {
+    background-color: #e3e3e3;
+    color: #000;
+    border-bottom-color: #000;
+}
+
+.expanded > .trigger {
+    display: none;
+}
+
+.expanded > .content {
+    display: inline;
+    animation: smoothFade 0.7s forwards;
+}
+
+@keyframes smoothFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.contact-info {
+    margin-top: 2rem;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    font-size: 0.95rem;
 }
