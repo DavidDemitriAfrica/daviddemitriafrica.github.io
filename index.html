@@ -3,62 +3,89 @@ layout: default
 title: "David Demitri Africa"
 ---
 
+<style>
+    /* 1. FLUSH LEFT ALIGNMENT FIX */
+    /* We apply the width limit to the BODY. 
+       This forces the Header (from default layout) AND the content 
+       to align perfectly in the same column. */
+    body {
+        font-family: 'Georgia', 'Times New Roman', serif; /* applied globally */
+        line-height: 1.4;
+        font-size: 16px;
+        color: #222;
+        
+        /* Center the column, keep text left-aligned */
+        margin: 50px auto; 
+        max-width: 650px; 
+        padding: 0 10px;
+    }
+
+    /* Link styling */
+    a { color: #0000EE; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* TELESCOPIC TEXT CSS */
+    .telescopic-text {
+        font-size: 1.15rem;
+        line-height: 1.6;
+    }
+
+    .content {
+        display: none;
+        opacity: 0;
+    }
+
+    .trigger {
+        cursor: pointer;
+        border-bottom: 2px solid #b4b4b4;
+        color: #222;
+        font-weight: 600;
+        transition: background 0.2s, color 0.2s;
+        /* ZERO margin ensures punctuation hugs the word */
+        margin: 0; 
+    }
+
+    .trigger:hover {
+        background-color: #e3e3e3;
+        color: #000;
+        border-bottom-color: #000;
+    }
+
+    .expanded > .trigger {
+        display: none;
+    }
+
+    /* Display inline ensures it flows like a sentence */
+    .expanded > .content {
+        display: inline;
+        animation: smoothFade 0.7s forwards;
+    }
+
+    @keyframes smoothFade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .contact-info {
+        margin-top: 2rem;
+        border-top: 1px solid #eee;
+        padding-top: 1rem;
+        font-size: 0.95rem;
+    }
+</style>
+
 <div class="telescopic-text">
     <p>
-        I am a 
-        <span class="telescope">
-            <span class="trigger" onclick="expand(this)">researcher</span>
-            <span class="content">
-                Research Scientist 
-                <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">working on safety</span>
-                    <span class="content">
-                        with the Alignment team at the UK AI Security Institute
-                    </span>
-                </span>
-            </span>
-        </span>.
-        I am also a 
-        <span class="telescope">
-            <span class="trigger" onclick="expand(this)">Scholar</span>
-            <span class="content">Jardine Postgraduate Cambridge Scholar</span>
-        </span>.
+        I am a <span class="telescope"><span class="trigger" onclick="expand(this)">researcher</span><span class="content">Research Scientist <span class="telescope"><span class="trigger" onclick="expand(this)">working on safety</span><span class="content">with the Alignment team at the UK AI Security Institute</span></span></span></span>.
+        I am also a <span class="telescope"><span class="trigger" onclick="expand(this)">Scholar</span><span class="content">Jardine Postgraduate Cambridge Scholar</span></span>.
     </p>
 
     <p>
-        My work focuses on 
-        <span class="telescope">
-            <span class="trigger" onclick="expand(this)">AI problems</span>
-            <span class="content">
-                technical AI alignment, 
-                <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">NLP</span>
-                    <span class="content">natural language processing</span>
-                </span>, 
-                and collective behavior
-            </span>
-        </span>.
+        My work focuses on <span class="telescope"><span class="trigger" onclick="expand(this)">AI problems</span><span class="content">technical AI alignment, <span class="telescope"><span class="trigger" onclick="expand(this)">NLP</span><span class="content">natural language processing</span></span>, and collective behavior</span></span>.
     </p>
 
     <p>
-        Outside of work, I 
-        <span class="telescope">
-            <span class="trigger" onclick="expand(this)">stay active</span>
-            <span class="content">
-                used to do competitive debate. Now I am trying to get good at 
-                <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">climbing</span>
-                    <span class="content">
-                        climbing (highest grade climbed: V6)
-                    </span>
-                </span>.
-                My next planned hike is 
-                <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">a mountain</span>
-                    <span class="content">Mt. Kabunian</span>
-                </span>.
-            </span>
-        </span>
+        Outside of work, I <span class="telescope"><span class="trigger" onclick="expand(this)">stay active</span><span class="content">used to do competitive debate. Now I am trying to get good at <span class="telescope"><span class="trigger" onclick="expand(this)">climbing</span><span class="content">climbing (highest grade climbed: V6)</span></span>. My next planned hike is <span class="telescope"><span class="trigger" onclick="expand(this)">a mountain</span><span class="content">Mt. Kabunian</span></span>.</span></span>
     </p>
 
     <div class="contact-info">
@@ -74,7 +101,6 @@ title: "David Demitri Africa"
 
 <script>
     function expand(element) {
-        // Find the parent span with class "telescope" and mark it as expanded
         element.parentElement.classList.add("expanded");
     }
 </script>
