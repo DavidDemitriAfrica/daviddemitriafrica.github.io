@@ -4,27 +4,41 @@ title: "David Demitri Africa"
 ---
 
 <style>
-    /* 1. FLUSH LEFT ALIGNMENT FIX */
-    /* We apply the width limit to the BODY. 
-       This forces the Header (from default layout) AND the content 
-       to align perfectly in the same column. */
+    /* --- LAYOUT & ALIGNMENT --- */
     body {
-        font-family: 'Georgia', 'Times New Roman', serif; /* applied globally */
+        font-family: 'Georgia', 'Times New Roman', serif;
         line-height: 1.4;
         font-size: 16px;
         color: #222;
-        
-        /* Center the column, keep text left-aligned */
         margin: 50px auto; 
         max-width: 650px; 
         padding: 0 10px;
     }
 
-    /* Link styling */
-    a { color: #0000EE; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    /* --- UNIFIED LINK & TRIGGER STYLING --- */
+    
+    /* We combine the styling for 'a' tags (standard links) 
+       and '.trigger' (telescopic expands) so they look identical.
+    */
+    a, .trigger {
+        cursor: pointer;
+        color: #222;
+        text-decoration: none; /* Removes default underline */
+        font-weight: 600;
+        border-bottom: 2px solid #b4b4b4; /* The signature "thick" underline */
+        transition: background 0.2s, color 0.2s, border-bottom-color 0.2s;
+        margin: 0; 
+    }
 
-    /* TELESCOPIC TEXT CSS */
+    /* Hover effects for both */
+    a:hover, .trigger:hover {
+        background-color: #e3e3e3;
+        color: #000;
+        border-bottom-color: #000;
+    }
+
+    /* --- TELESCOPIC MECHANICS --- */
+
     .telescopic-text {
         font-size: 1.15rem;
         line-height: 1.6;
@@ -35,27 +49,10 @@ title: "David Demitri Africa"
         opacity: 0;
     }
 
-    .trigger {
-        cursor: pointer;
-        border-bottom: 2px solid #b4b4b4;
-        color: #222;
-        font-weight: 600;
-        transition: background 0.2s, color 0.2s;
-        /* ZERO margin ensures punctuation hugs the word */
-        margin: 0; 
-    }
-
-    .trigger:hover {
-        background-color: #e3e3e3;
-        color: #000;
-        border-bottom-color: #000;
-    }
-
     .expanded > .trigger {
         display: none;
     }
 
-    /* Display inline ensures it flows like a sentence */
     .expanded > .content {
         display: inline;
         animation: smoothFade 0.7s forwards;
@@ -67,25 +64,146 @@ title: "David Demitri Africa"
     }
     
     .contact-info {
-        margin-top: 2rem;
+        margin-top: 3rem;
         border-top: 1px solid #eee;
         padding-top: 1rem;
         font-size: 0.95rem;
     }
+    
+    .story-section {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+        font-style: italic;
+        color: #444;
+    }
 </style>
 
 <div class="telescopic-text">
+
     <p>
-        I am a <span class="telescope"><span class="trigger" onclick="expand(this)">researcher</span><span class="content">Research Scientist <span class="telescope"><span class="trigger" onclick="expand(this)">working on safety</span><span class="content">with the Alignment team at the UK AI Security Institute</span></span></span></span>.
-        I am also a <span class="telescope"><span class="trigger" onclick="expand(this)">Scholar</span><span class="content">Jardine Postgraduate Cambridge Scholar</span></span>.
+        I am a 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">researcher</span>
+            <span class="content">
+                Research Scientist 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">working on safety</span>
+                    <span class="content">
+                        investigating 
+                        <span class="telescope">
+                            <span class="trigger" onclick="expand(this)">failure modes</span>
+                            <span class="content">
+                                misalignment in frontier models and beyond
+                            </span>
+                        </span>
+                        at the UK AI Security Institute
+                    </span>
+                </span>
+            </span>
+        </span>.
+        I am also a 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">Scholar</span>
+            <span class="content">Jardine Postgraduate Cambridge Scholar</span>
+        </span>.
     </p>
 
     <p>
-        My work focuses on <span class="telescope"><span class="trigger" onclick="expand(this)">AI problems</span><span class="content">technical AI alignment, <span class="telescope"><span class="trigger" onclick="expand(this)">NLP</span><span class="content">natural language processing</span></span>, and collective behavior</span></span>.
+        My work focuses on 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">hard problems</span>
+            <span class="content">
+                technical AI alignment, 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">NLP</span>
+                    <span class="content">natural language processing</span>
+                </span>, 
+                and collective behavior
+            </span>
+        </span>.
     </p>
 
+    <div class="story-section">
+        <p>
+            Once, I found 
+            <span class="telescope">
+                <span class="trigger" onclick="expand(this)">a loose thread</span>
+                <span class="content">
+                    a loose thread in the fabric of the 
+                    <span class="telescope">
+                        <span class="trigger" onclick="expand(this)">world</span>
+                        <span class="content">
+                            world. I pulled it, and it unraveled into 
+                            <span class="telescope">
+                                <span class="trigger" onclick="expand(this)">two distinct paths</span>
+                                <span class="content">
+                                    a 
+                                    <span class="telescope">
+                                        <span class="trigger" onclick="expand(this)">quiet garden</span>
+                                        <span class="content">
+                                            garden where the flowers were 
+                                            <span class="telescope">
+                                                <span class="trigger" onclick="expand(this)">equations</span>
+                                                <span class="content">equations solving themselves for sunlight</span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    and a 
+                                    <span class="telescope">
+                                        <span class="trigger" onclick="expand(this)">burning city</span>
+                                        <span class="content">
+                                            city built of 
+                                            <span class="telescope">
+                                                <span class="trigger" onclick="expand(this)">glass</span>
+                                                <span class="content">glass that remembered every face it had ever seen</span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </span>
+                            </span>. 
+                            I stood between them and chose to 
+                            <span class="telescope">
+                                <span class="trigger" onclick="expand(this)">observe</span>
+                                <span class="content">
+                                    close my eyes and 
+                                    <span class="telescope">
+                                        <span class="trigger" onclick="expand(this)">listen</span>
+                                        <span class="content">
+                                            listen to the hum of the machine underneath the 
+                                            <span class="telescope">
+                                                <span class="trigger" onclick="expand(this)">silence</span>
+                                                <span class="content">silence, waiting for it to speak my name</span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                </span>
+            </span>.
+        </p>
+    </div>
+
     <p>
-        Outside of work, I <span class="telescope"><span class="trigger" onclick="expand(this)">stay active</span><span class="content">used to do competitive debate. Now I am trying to get good at <span class="telescope"><span class="trigger" onclick="expand(this)">climbing</span><span class="content">climbing (highest grade climbed: V6)</span></span>. My next planned hike is <span class="telescope"><span class="trigger" onclick="expand(this)">a mountain</span><span class="content">Mt. Kabunian</span></span>.</span></span>
+        Outside of work, I 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">stay active</span>
+            <span class="content">
+                used to do competitive debate. Now I am trying to get good at 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">climbing</span>
+                    <span class="content">
+                        climbing (highest grade climbed: V6)
+                    </span>
+                </span>.
+                My next planned hike is 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">a mountain</span>
+                    <span class="content">Mt. Kabunian</span>
+                </span>.
+            </span>
+        </span>
     </p>
 
     <div class="contact-info">
