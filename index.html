@@ -1,31 +1,61 @@
----
-layout: default
-title: "David Demitri Africa"
----
-
 <style>
-    /* Mimic the "poetic" look of Alan Trotter's site */
+    /* --- LAYOUT & ALIGNMENT FIXES --- */
+    
+    /* 1. Applied max-width to body to ensure Header and Content 
+          share the exact same alignment and padding.
+    */
+    body {
+        line-height: 1.4;
+        font-size: 16px;
+        padding: 0 10px;
+        margin: 50px auto; /* Centers the whole column vertically and horizontally */
+        max-width: 650px;  /* Controls the width of Header AND Body */
+    }
+
+    /* Removed specific max-width here so it inherits from body, 
+       ensuring it is flush with the header.
+    */
+    #maincontent {
+        width: 100%; 
+    }
+
+    /* Link styling */
+    a {
+        color: #0000EE;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* --- TELESCOPIC TEXT STYLING --- */
+
     .telescopic-text {
         font-family: 'Georgia', 'Times New Roman', serif;
         font-size: 1.15rem;
         line-height: 1.6;
-        max-width: 700px;
+        /* Width is now controlled by body, but max-width here is fine as a safeguard */
+        max-width: 100%; 
     }
 
-    /* The expandable content is hidden by default */
     .content {
         display: none;
         opacity: 0;
     }
 
-    /* The clickable word (trigger) */
     .trigger {
         cursor: pointer;
-        border-bottom: 2px solid #b4b4b4; /* Thicker, softer underline */
+        border-bottom: 2px solid #b4b4b4;
         color: #222;
         font-weight: 600;
         transition: background 0.2s, color 0.2s;
-        margin: 0 2px;
+        
+        /* 2. PUNCTUATION FIX: 
+           Removed "margin: 0 2px". This removes the gap between 
+           the word and the period/comma following it.
+        */
+        margin: 0; 
     }
 
     .trigger:hover {
@@ -34,7 +64,6 @@ title: "David Demitri Africa"
         border-bottom-color: #000;
     }
 
-    /* When expanded: Hide trigger, Show content with fade-in */
     .expanded > .trigger {
         display: none;
     }
@@ -49,7 +78,6 @@ title: "David Demitri Africa"
         to { opacity: 1; }
     }
     
-    /* Contact list styling to match the vibe */
     .contact-info {
         margin-top: 2rem;
         border-top: 1px solid #eee;
@@ -58,78 +86,79 @@ title: "David Demitri Africa"
     }
 </style>
 
-<div class="telescopic-text">
-    <p>
-        I am a 
-        <span class="telescope">
-            <span class="trigger" onclick="expand(this)">researcher</span>
-            <span class="content">
-                Research Scientist 
-                <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">working on safety</span>
-                    <span class="content">
-                        with the Alignment team at the UK AI Security Institute
+<div id="maincontent">
+    <div class="telescopic-text">
+        <p>
+            I am a 
+            <span class="telescope">
+                <span class="trigger" onclick="expand(this)">researcher</span>
+                <span class="content">
+                    Research Scientist 
+                    <span class="telescope">
+                        <span class="trigger" onclick="expand(this)">working on safety</span>
+                        <span class="content">
+                            with the Alignment team at the UK AI Security Institute
+                        </span>
                     </span>
-                </span>.
+                </span>
+            </span>.
+            I am also a 
+            <span class="telescope">
+                <span class="trigger" onclick="expand(this)">Scholar</span>
+                <span class="content">Jardine Postgraduate Cambridge Scholar</span>
+            </span>.
+        </p>
+    
+        <p>
+            My work focuses on 
+            <span class="telescope">
+                <span class="trigger" onclick="expand(this)">AI problems</span>
+                <span class="content">
+                    technical AI alignment, 
+                    <span class="telescope">
+                        <span class="trigger" onclick="expand(this)">NLP</span>
+                        <span class="content">natural language processing</span>
+                    </span>, 
+                    and collective behavior
+                </span>
+            </span>.
+        </p>
+    
+        <p>
+            Outside of work, I 
+            <span class="telescope">
+                <span class="trigger" onclick="expand(this)">stay active</span>
+                <span class="content">
+                    used to do competitive debate. Now I am trying to get good at 
+                    <span class="telescope">
+                        <span class="trigger" onclick="expand(this)">climbing</span>
+                        <span class="content">
+                            climbing (highest grade climbed: V6)
+                        </span>
+                    </span>.
+                    My next planned hike is 
+                    <span class="telescope">
+                        <span class="trigger" onclick="expand(this)">a mountain</span>
+                        <span class="content">Mt. Kabunian</span>
+                    </span>.
+                </span>
             </span>
-        </span>
-        I am also a 
-        <span class="telescope">
-            <span class="trigger" onclick="expand(this)">Scholar</span>
-            <span class="content">Jardine Postgraduate Cambridge Scholar</span>
-        </span>.
-    </p>
-
-    <p>
-        My work focuses on 
-        <span class="telescope">
-            <span class="trigger" onclick="expand(this)">AI problems</span>
-            <span class="content">
-                technical AI alignment, 
-                <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">NLP</span>
-                    <span class="content">natural language processing</span>
-                </span>, 
-                and collective behavior
-            </span>
-        </span>.
-    </p>
-
-    <p>
-        Outside of work, I 
-        <span class="telescope">
-            <span class="trigger" onclick="expand(this)">stay active</span>
-            <span class="content">
-                used to do competitive debate. Now I am trying to get good at 
-                <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">climbing</span>
-                    <span class="content">
-                        climbing (highest grade climbed: V6)
-                    </span>
-                </span>.
-                My next planned hike is 
-                <span class="telescope">
-                    <span class="trigger" onclick="expand(this)">a mountain</span>
-                    <span class="content">Mt. Kabunian</span>
-                </span>.
-            </span>
-        </span>
-    </p>
-
-    <div class="contact-info">
-        <p>Contact me at:</p>
-        <ul>
-            <li><strong>Work Email:</strong> <a href="mailto:David.Africa@dsit.gov.uk">David.Africa@dsit.gov.uk</a></li>
-            <li><strong>Instagram:</strong> <a href="https://www.instagram.com/daviddemitriafrica/" target="_blank">instagram.com/daviddemitriafrica/</a></li>
-            <li><strong>GitHub:</strong> <a href="https://github.com/DavidDemitriAfrica/" target="_blank">github.com/DavidDemitriAfrica/</a></li>
-            <li><strong>Twitter:</strong> <a href="https://x.com/DavidSmashfrica" target="_blank">twitter.com/DavidSmashfrica</a></li>
-        </ul>
+        </p>
+    
+        <div class="contact-info">
+            <p>Contact me at:</p>
+            <ul>
+                <li><strong>Work Email:</strong> <a href="mailto:David.Africa@dsit.gov.uk">David.Africa@dsit.gov.uk</a></li>
+                <li><strong>Instagram:</strong> <a href="https://www.instagram.com/daviddemitriafrica/" target="_blank">instagram.com/daviddemitriafrica/</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/DavidDemitriAfrica/" target="_blank">github.com/DavidDemitriAfrica/</a></li>
+                <li><strong>Twitter:</strong> <a href="https://x.com/DavidSmashfrica" target="_blank">twitter.com/DavidSmashfrica</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 
 <script>
     function expand(element) {
-        // Find the parent span with class "telescope" and mark it as expanded
         element.parentElement.classList.add("expanded");
     }
 </script>
