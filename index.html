@@ -4,39 +4,27 @@ title: "David Demitri Africa"
 ---
 
 <style>
-    /* --- LAYOUT & ALIGNMENT --- */
     body {
         font-family: 'Georgia', 'Times New Roman', serif;
-        line-height: 1.5; /* Slightly increased for literary feel */
-        font-size: 16px;
+        line-height: 1.6;
+        font-size: 17px;
         color: #222;
         margin: 50px auto; 
-        max-width: 650px; 
-        padding: 0 10px;
+        max-width: 620px; 
+        padding: 0 20px;
     }
 
-    /* --- UNIFIED LINK & TRIGGER STYLING --- */
-    a, .trigger {
+    .trigger {
         cursor: pointer;
         color: #222;
         text-decoration: none;
-        font-weight: 600;
-        border-bottom: 2px solid #b4b4b4; 
-        transition: background 0.2s, color 0.2s, border-bottom-color 0.2s;
-        margin: 0; 
-        padding: 0;
+        border-bottom: 1.5px solid #999;
+        transition: border-color 0.2s, background 0.2s;
     }
 
-    a:hover, .trigger:hover {
-        background-color: #e3e3e3;
-        color: #000;
-        border-bottom-color: #000;
-    }
-
-    /* --- TELESCOPIC MECHANICS --- */
-    .telescopic-text {
-        font-size: 1.15rem;
-        line-height: 1.6;
+    .trigger:hover {
+        background-color: #f0f0f0;
+        border-bottom-color: #444;
     }
 
     .content {
@@ -45,69 +33,95 @@ title: "David Demitri Africa"
     }
 
     .expanded > .trigger {
-        display: none;
+        border-bottom: none;
+        cursor: default;
     }
 
-    /* "display: inline" allows the text to flow into the paragraph naturally */
     .expanded > .content {
         display: inline;
-        animation: smoothFade 0.8s forwards;
+        animation: fade 0.5s forwards;
     }
 
-    @keyframes smoothFade {
+    @keyframes fade {
         from { opacity: 0; }
         to { opacity: 1; }
     }
     
     .contact-info {
         margin-top: 3rem;
-        border-top: 1px solid #eee;
-        padding-top: 1rem;
-        font-size: 0.95rem;
+        border-top: 1px solid #ddd;
+        padding-top: 1.5rem;
+        font-size: 0.9rem;
     }
     
-    /* Subtle styling for the story section to differentiate it slightly */
-    .narrative-sprawl {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
+    .contact-info ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .contact-info li {
+        margin: 0.4rem 0;
+    }
+    
+    .contact-info a {
+        color: #222;
+        text-decoration: none;
+        border-bottom: 1px solid #999;
+    }
+    
+    .contact-info a:hover {
+        border-bottom-color: #222;
     }
 </style>
 
-<div class="telescopic-text">
-
+<div>
     <p>
-        I am a <span class="telescope"><span class="trigger" onclick="expand(this)">researcher</span><span class="content">Research Scientist <span class="telescope"><span class="trigger" onclick="expand(this)">working on safety</span><span class="content">investigating <span class="telescope"><span class="trigger" onclick="expand(this)">failure modes</span><span class="content">misalignment in frontier models and beyond</span></span> at the UK AI Security Institute</span></span></span></span>.
-        I am also a <span class="telescope"><span class="trigger" onclick="expand(this)">Scholar</span><span class="content">Jardine Postgraduate Cambridge Scholar</span></span>.
+        I am a <span class="telescope"><span class="trigger" onclick="expand(this)">researcher</span><span class="content">researcher at the UK <span class="telescope"><span class="trigger" onclick="expand(this)">AI</span><span class="content">AI Security</span></span> Institute</span></span>. 
+        I study <span class="telescope"><span class="trigger" onclick="expand(this)">alignment</span><span class="content">alignment, <span class="telescope"><span class="trigger" onclick="expand(this)">specifically</span><span class="content">specifically how models <span class="telescope"><span class="trigger" onclick="expand(this)">fail</span><span class="content">fail <span class="telescope"><span class="trigger" onclick="expand(this)">us</span><span class="content">us quietly</span></span></span></span></span></span></span></span>.
     </p>
 
     <p>
-        My work focuses on <span class="telescope"><span class="trigger" onclick="expand(this)">hard problems</span><span class="content">technical AI alignment, <span class="telescope"><span class="trigger" onclick="expand(this)">NLP</span><span class="content">natural language processing</span></span>, and collective behavior</span></span>.
+        I am also a <span class="telescope"><span class="trigger" onclick="expand(this)">scholar</span><span class="content">Jardine scholar</span></span> at <span class="telescope"><span class="trigger" onclick="expand(this)">Cambridge</span><span class="content">Cambridge, still</span></span>.
     </p>
 
-    <div class="narrative-sprawl">
-        <p>
-            <span class="telescope"><span class="trigger" onclick="expand(this)">Hello</span><span class="content">I am writing this from <span class="telescope"><span class="trigger" onclick="expand(this)">a train</span><span class="content">a train moving east, suspended in the <span class="telescope"><span class="trigger" onclick="expand(this)">interval</span><span class="content">interval between departure and arrival, that hollow space where we are accountable to no one. The landscape outside is <span class="telescope"><span class="trigger" onclick="expand(this)">blurred</span><span class="content">reduced to a smear of green and grey, a geometry of speed that renders the world abstract. It reminds me of <span class="telescope"><span class="trigger" onclick="expand(this)">a conversation</span><span class="content">that conversation we had in the kitchen, before the noise started. You were sitting by the window, outlined against the <span class="telescope"><span class="trigger" onclick="expand(this)">thin light</span><span class="content">thin, merciless light of a November afternoon, and you were talking about <span class="telescope"><span class="trigger" onclick="expand(this)">the future</span><span class="content">the future as if it were a room we could just walk into. But I was looking at the <span class="telescope"><span class="trigger" onclick="expand(this)">shape of your hands</span><span class="content">shape of your hands on the table, and realizing that we were speaking two different languages, that the words you used were merely <span class="telescope"><span class="trigger" onclick="expand(this)">containers</span><span class="content">containers for a meaning I could not access. It was a problem of <span class="telescope"><span class="trigger" onclick="expand(this)">alignment</span><span class="content">alignment: we were looking at the same world but seeing <span class="telescope"><span class="trigger" onclick="expand(this)">two different maps</span><span class="content">two different maps, neither of which led home</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>.</span></span>
-        </p>
-    </div>
+    <p style="margin-top: 2rem;">
+        <span class="telescope"><span class="trigger" onclick="expand(this)">Sometimes</span><span class="content">Sometimes I write from <span class="telescope"><span class="trigger" onclick="expand(this)">trains</span><span class="content">trains moving <span class="telescope"><span class="trigger" onclick="expand(this)">east</span><span class="content">east, suspended in the <span class="telescope"><span class="trigger" onclick="expand(this)">interval</span><span class="content">interval between <span class="telescope"><span class="trigger" onclick="expand(this)">places</span><span class="content">places, accountable to <span class="telescope"><span class="trigger" onclick="expand(this)">no one</span><span class="content">no one yet</span></span></span></span></span></span></span></span></span></span></span></span>.
+    </p>
 
     <p>
-        Outside of work, I <span class="telescope"><span class="trigger" onclick="expand(this)">stay active</span><span class="content">used to do competitive debate. Now I am trying to get good at <span class="telescope"><span class="trigger" onclick="expand(this)">climbing</span><span class="content">climbing (highest grade climbed: V6)</span></span>. My next planned hike is <span class="telescope"><span class="trigger" onclick="expand(this)">a mountain</span><span class="content">Mt. Kabunian</span></span>.</span></span>.
+        The landscape <span class="telescope"><span class="trigger" onclick="expand(this)">blurs</span><span class="content">blurs into <span class="telescope"><span class="trigger" onclick="expand(this)">geometry</span><span class="content">geometry, <span class="telescope"><span class="trigger" onclick="expand(this)">abstract</span><span class="content">abstract and <span class="telescope"><span class="trigger" onclick="expand(this)">fast</span><span class="content">fast, the way <span class="telescope"><span class="trigger" onclick="expand(this)">memory</span><span class="content">memory does <span class="telescope"><span class="trigger" onclick="expand(this)">too</span><span class="content">too, eventually</span></span></span></span></span></span></span></span></span></span></span></span>.
+    </p>
+
+    <p>
+        I remember a <span class="telescope"><span class="trigger" onclick="expand(this)">conversation</span><span class="content">conversation in a <span class="telescope"><span class="trigger" onclick="expand(this)">kitchen</span><span class="content">kitchen, <span class="telescope"><span class="trigger" onclick="expand(this)">November</span><span class="content">November light <span class="telescope"><span class="trigger" onclick="expand(this)">thin</span><span class="content">thin against the <span class="telescope"><span class="trigger" onclick="expand(this)">window</span><span class="content">window where you <span class="telescope"><span class="trigger" onclick="expand(this)">sat</span><span class="content">sat talking about the <span class="telescope"><span class="trigger" onclick="expand(this)">future</span><span class="content">future as if it were a <span class="telescope"><span class="trigger" onclick="expand(this)">room</span><span class="content">room we could <span class="telescope"><span class="trigger" onclick="expand(this)">enter</span><span class="content">enter together</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>.
+    </p>
+
+    <p>
+        I watched your <span class="telescope"><span class="trigger" onclick="expand(this)">hands</span><span class="content">hands on the <span class="telescope"><span class="trigger" onclick="expand(this)">table</span><span class="content">table and <span class="telescope"><span class="trigger" onclick="expand(this)">understood</span><span class="content">understood we were speaking <span class="telescope"><span class="trigger" onclick="expand(this)">differently</span><span class="content">differently, the same <span class="telescope"><span class="trigger" onclick="expand(this)">words</span><span class="content">words holding <span class="telescope"><span class="trigger" onclick="expand(this)">different</span><span class="content">different <span class="telescope"><span class="trigger" onclick="expand(this)">maps</span><span class="content">maps, neither <span class="telescope"><span class="trigger" onclick="expand(this)">leading</span><span class="content">leading home</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>.
+    </p>
+
+    <p>
+        A problem of <span class="telescope"><span class="trigger" onclick="expand(this)">alignment</span><span class="content">alignment, <span class="telescope"><span class="trigger" onclick="expand(this)">I suppose</span><span class="content">I suppose, though I didn't have the <span class="telescope"><span class="trigger" onclick="expand(this)">word</span><span class="content">word then</span></span></span></span></span></span>.
+    </p>
+
+    <p style="margin-top: 2rem;">
+        Outside work I <span class="telescope"><span class="trigger" onclick="expand(this)">climb</span><span class="content">climb, <span class="telescope"><span class="trigger" onclick="expand(this)">badly</span><span class="content">badly but <span class="telescope"><span class="trigger" onclick="expand(this)">improving</span><span class="content">improving, V6 <span class="telescope"><span class="trigger" onclick="expand(this)">once</span><span class="content">once on a good day</span></span></span></span></span></span></span></span>. 
+        I used to <span class="telescope"><span class="trigger" onclick="expand(this)">debate</span><span class="content">debate <span class="telescope"><span class="trigger" onclick="expand(this)">competitively</span><span class="content">competitively, before</span></span></span></span>. 
+        Soon I'll hike <span class="telescope"><span class="trigger" onclick="expand(this)">Kabunian</span><span class="content">Kabunian, <span class="telescope"><span class="trigger" onclick="expand(this)">if</span><span class="content">if I can find the <span class="telescope"><span class="trigger" onclick="expand(this)">time</span><span class="content">time between <span class="telescope"><span class="trigger" onclick="expand(this)">trains</span><span class="content">trains and failures</span></span></span></span></span></span></span></span>.
     </p>
 
     <div class="contact-info">
-        <p>Contact me at:</p>
         <ul>
-            <li><a href="mailto:David.Africa@dsit.gov.uk">Work Email</a></li>
-            <li><a href="https://www.instagram.com/daviddemitriafrica/" target="_blank">Instagram</a></li>
-            <li><a href="https://github.com/DavidDemitriAfrica/" target="_blank">GitHub</a></li>
-            <li><a href="https://x.com/DavidSmashfrica" target="_blank">Twitter</a></li>
-            <li><a href="https://scholar.google.co.uk/citations?user=JsydmjkAAAAJ&hl=en" target="_blank">Google Scholar</a></li>
+            <li><a href="mailto:David.Africa@dsit.gov.uk">david.africa@dsit.gov.uk</a></li>
+            <li><a href="https://github.com/DavidDemitriAfrica/">github</a></li>
+            <li><a href="https://scholar.google.co.uk/citations?user=JsydmjkAAAAJ&hl=en">google scholar</a></li>
+            <li><a href="https://x.com/DavidSmashfrica">twitter</a></li>
         </ul>
     </div>
 </div>
 
 <script>
-    function expand(element) {
-        element.parentElement.classList.add("expanded");
+    function expand(el) {
+        el.parentElement.classList.add("expanded");
     }
 </script>
