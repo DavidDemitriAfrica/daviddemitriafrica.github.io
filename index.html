@@ -1,174 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Demitri Africa</title>
-    <style>
-        /* 1. Typography & Layout - Minimalist & Academic */
-        body {
-            font-family: 'Georgia', 'Times New Roman', Times, serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 680px;
-            margin: 80px auto;
-            padding: 0 20px;
-            background-color: #fcfcfc;
-        }
+---
+layout: default
+title: "David Demitri Africa"
+---
 
-        h1 {
-            font-weight: normal;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #111;
-        }
+<style>
+    /* Mimic the "poetic" look of Alan Trotter's site */
+    .telescopic-text {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        max-width: 700px;
+    }
 
-        /* 2. The Telescopic Logic */
-        
-        /* The expanded text is hidden by default */
-        .content {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-in;
-        }
+    /* The expandable content is hidden by default */
+    .content {
+        display: none;
+        opacity: 0;
+    }
 
-        /* The clickable word */
-        .trigger {
-            cursor: pointer;
-            border-bottom: 1px dotted #888;
-            color: #000;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
+    /* The clickable word (trigger) */
+    .trigger {
+        cursor: pointer;
+        border-bottom: 2px solid #b4b4b4; /* Thicker, softer underline */
+        color: #222;
+        font-weight: 600;
+        transition: background 0.2s, color 0.2s;
+        margin: 0 2px;
+    }
 
-        .trigger:hover {
-            background-color: #efefef;
-            border-bottom: 1px solid #000;
-        }
+    .trigger:hover {
+        background-color: #e3e3e3;
+        color: #000;
+        border-bottom-color: #000;
+    }
 
-        /* When we add the 'expanded' class via JS:
-           1. Hide the trigger 
-           2. Show the content inline */
-        .expanded > .trigger {
-            display: none;
-        }
+    /* When expanded: Hide trigger, Show content with fade-in */
+    .expanded > .trigger {
+        display: none;
+    }
 
-        .expanded > .content {
-            display: inline;
-            animation: fadeIn 0.6s forwards;
-        }
+    .expanded > .content {
+        display: inline;
+        animation: smoothFade 0.7s forwards;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    @keyframes smoothFade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    /* Contact list styling to match the vibe */
+    .contact-info {
+        margin-top: 2rem;
+        border-top: 1px solid #eee;
+        padding-top: 1rem;
+        font-size: 0.95rem;
+    }
+</style>
 
-        /* 3. Footer / Contact Styling */
-        footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #eaeaea;
-            font-size: 0.9rem;
-        }
-
-        .contact-list p {
-            margin: 5px 0;
-        }
-
-        a {
-            color: #444;
-            text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 3px;
-        }
-
-        a:hover {
-            background-color: #efefef;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>David Demitri Africa</h1>
-    </header>
-
-    <main>
-        <p>
-            I am a 
-            <span class="telescope">
-                <span class="trigger" onclick="expand(this)">researcher</span>
-                <span class="content">
-                    Research Scientist 
-                    <span class="telescope">
-                        <span class="trigger" onclick="expand(this)">working on safety</span>
-                        <span class="content">
-                            with the Alignment team at the UK AI Security Institute
-                        </span>
-                    </span>.
-                </span>
+<div class="telescopic-text">
+    <p>
+        I am a 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">researcher</span>
+            <span class="content">
+                Research Scientist 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">working on safety</span>
+                    <span class="content">
+                        with the Alignment team at the UK AI Security Institute
+                    </span>
+                </span>.
             </span>
-            I am also a 
-            <span class="telescope">
-                <span class="trigger" onclick="expand(this)">Scholar</span>
-                <span class="content">Jardine Postgraduate Cambridge Scholar</span>
-            </span>.
-        </p>
+        </span>
+        I am also a 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">Scholar</span>
+            <span class="content">Jardine Postgraduate Cambridge Scholar</span>
+        </span>.
+    </p>
 
-        <p>
-            My work focuses on 
-            <span class="telescope">
-                <span class="trigger" onclick="expand(this)">AI problems</span>
-                <span class="content">
-                    technical AI alignment, 
-                    <span class="telescope">
-                        <span class="trigger" onclick="expand(this)">NLP</span>
-                        <span class="content">natural language processing</span>
-                    </span>, 
-                    and collective behavior
-                </span>
-            </span>.
-        </p>
-
-        <p>
-            Outside of work, I 
-            <span class="telescope">
-                <span class="trigger" onclick="expand(this)">stay active</span>
-                <span class="content">
-                    used to do competitive debate, but am now trying to get good at 
-                    <span class="telescope">
-                        <span class="trigger" onclick="expand(this)">climbing</span>
-                        <span class="content">
-                            climbing (highest grade climbed: V6)
-                        </span>
-                    </span>.
-                    My next planned hike is 
-                    <span class="telescope">
-                        <span class="trigger" onclick="expand(this)">a mountain</span>
-                        <span class="content">Mt. Kabunian</span>
-                    </span>.
-                </span>
+    <p>
+        My work focuses on 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">AI problems</span>
+            <span class="content">
+                technical AI alignment, 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">NLP</span>
+                    <span class="content">natural language processing</span>
+                </span>, 
+                and collective behavior
             </span>
-        </p>
-    </main>
+        </span>.
+    </p>
 
-    <footer>
+    <p>
+        Outside of work, I 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">stay active</span>
+            <span class="content">
+                used to do competitive debate. Now I am trying to get good at 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">climbing</span>
+                    <span class="content">
+                        climbing (highest grade climbed: V6)
+                    </span>
+                </span>.
+                My next planned hike is 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">a mountain</span>
+                    <span class="content">Mt. Kabunian</span>
+                </span>.
+            </span>
+        </span>
+    </p>
+
+    <div class="contact-info">
         <p>Contact me at:</p>
-        <div class="contact-list">
-            <p><strong>Email:</strong> <a href="mailto:David.Africa@dsit.gov.uk">David.Africa@dsit.gov.uk</a></p>
-            <p><strong>Instagram:</strong> <a href="https://www.instagram.com/daviddemitriafrica/" target="_blank">@daviddemitriafrica</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/DavidDemitriAfrica/" target="_blank">github.com/DavidDemitriAfrica</a></p>
-            <p><strong>Twitter:</strong> <a href="https://x.com/DavidSmashfrica" target="_blank">@DavidSmashfrica</a></p>
-        </div>
-    </footer>
+        <ul>
+            <li><strong>Work Email:</strong> <a href="mailto:David.Africa@dsit.gov.uk">David.Africa@dsit.gov.uk</a></li>
+            <li><strong>Instagram:</strong> <a href="https://www.instagram.com/daviddemitriafrica/" target="_blank">instagram.com/daviddemitriafrica/</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/DavidDemitriAfrica/" target="_blank">github.com/DavidDemitriAfrica/</a></li>
+            <li><strong>Twitter:</strong> <a href="https://x.com/DavidSmashfrica" target="_blank">twitter.com/DavidSmashfrica</a></li>
+        </ul>
+    </div>
+</div>
 
-    <script>
-        // The logic requires finding the parent <span> and adding a class to it.
-        function expand(element) {
-            // "element" is the clickable trigger word.
-            // We want to add the class "expanded" to its parent container.
-            element.parentElement.classList.add("expanded");
-        }
-    </script>
-</body>
-</html>
+<script>
+    function expand(element) {
+        // Find the parent span with class "telescope" and mark it as expanded
+        element.parentElement.classList.add("expanded");
+    }
+</script>
