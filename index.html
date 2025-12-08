@@ -3,98 +3,171 @@ layout: default
 title: "David Demitri Africa"
 ---
 
-<p>
-    I am a 
-    <span class="telescope">
-        <span class="trigger" onclick="expand(this)">researcher</span>
-        <span class="content">
-            Research Scientist 
-            <span class="telescope">
-                <span class="trigger" onclick="expand(this)">working on safety</span>
-                <span class="content">
-                    with the Alignment team at the UK AI Security Institute
+<style>
+    /* Mimic the "poetic" look */
+    .telescopic-text {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: #222;
+    }
+
+    /* The expandable content is hidden by default */
+    .content {
+        display: none;
+        opacity: 0;
+    }
+
+    /* The clickable word (trigger) */
+    .trigger {
+        cursor: pointer;
+        border-bottom: 2px solid #b4b4b4;
+        color: #222;
+        font-weight: 600;
+        transition: background 0.2s, color 0.2s;
+        margin: 0 1px;
+    }
+
+    .trigger:hover {
+        background-color: #e3e3e3;
+        color: #000;
+        border-bottom-color: #000;
+    }
+
+    /* When expanded: Hide trigger, Show content with fade-in */
+    .expanded > .trigger {
+        display: none;
+    }
+
+    .expanded > .content {
+        display: inline;
+        animation: smoothFade 0.7s forwards;
+    }
+
+    @keyframes smoothFade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    /* Contact list styling */
+    .contact-info {
+        margin-top: 3rem;
+        border-top: 1px solid #eee;
+        padding-top: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .contact-info ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .contact-info li {
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+<div class="telescopic-text">
+    <p>
+        I am a 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">researcher</span>
+            <span class="content">
+                Research Scientist 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">working on safety</span>
+                    <span class="content">
+                        with the Alignment team at the UK AI Security Institute
+                    </span>
                 </span>
             </span>
-        </span>
-    </span>.
-    I 
-    <span class="telescope">
-        <span class="trigger" onclick="expand(this)">studied</span>
-        <span class="content">
-            was a 
-            <span class="telescope">
-                <span class="trigger" onclick="expand(this)">student</span>
-                <span class="content">
-                    Jardine Postgraduate Scholar
+        </span>.
+        I 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">studied</span>
+            <span class="content">
+                was a 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">student</span>
+                    <span class="content">
+                        Jardine Postgraduate Scholar
+                    </span>
+                </span>
+                at Cambridge
+            </span>
+        </span>.
+    </p>
+
+    <p>
+        I am interested in 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">problems</span>
+            <span class="content">
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">AI</span>
+                    <span class="content">technical AI alignment</span>
+                </span>,
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">language</span>
+                    <span class="content">natural language processing</span>
+                </span>, 
+                and 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">behavior</span>
+                    <span class="content">collective behavior</span>
                 </span>
             </span>
-            at Cambridge
-        </span>
-    </span>.
-</p>
+        </span>.
+    </p>
 
-<p>
-    I am interested in 
-    <span class="telescope">
-        <span class="trigger" onclick="expand(this)">problems</span>
-        <span class="content">
-            <span class="telescope">
-                <span class="trigger" onclick="expand(this)">AI</span>
-                <span class="content">technical AI alignment</span>
-            </span>,
-            <span class="telescope">
-                <span class="trigger" onclick="expand(this)">language</span>
-                <span class="content">natural language processing</span>
-            </span>, 
-            and 
-            <span class="telescope">
-                <span class="trigger" onclick="expand(this)">behavior</span>
-                <span class="content">collective behavior</span>
+    <p>
+        In a past life, I 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">argued</span>
+            <span class="content">
+                used to do competitive debate
             </span>
-        </span>
-    </span>.
-</p>
-
-<p>
-    In a past life, I 
-    <span class="telescope">
-        <span class="trigger" onclick="expand(this)">argued</span>
-        <span class="content">
-            used to do competitive debate
-        </span>
-    </span>.
-    Now, I 
-    <span class="telescope">
-        <span class="trigger" onclick="expand(this)">move</span>
-        <span class="content">
-            am trying to get good at 
-            <span class="telescope">
-                <span class="trigger" onclick="expand(this)">climbing</span>
-                <span class="content">
-                    climbing (current highest grade: V6)
+        </span>.
+        Now, I 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">move</span>
+            <span class="content">
+                am trying to get good at 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">climbing</span>
+                    <span class="content">
+                        climbing (current highest grade: V6)
+                    </span>
                 </span>
             </span>
-        </span>
-    </span>.
-    My next 
-    <span class="telescope">
-        <span class="trigger" onclick="expand(this)">trip</span>
-        <span class="content">
-            planned hike is 
-            <span class="telescope">
-                <span class="trigger" onclick="expand(this)">a mountain</span>
-                <span class="content">Mt. Kabunian</span>
+        </span>.
+        My next 
+        <span class="telescope">
+            <span class="trigger" onclick="expand(this)">trip</span>
+            <span class="content">
+                planned hike is 
+                <span class="telescope">
+                    <span class="trigger" onclick="expand(this)">a mountain</span>
+                    <span class="content">Mt. Kabunian</span>
+                </span>
             </span>
-        </span>
-    </span>.
-</p>
+        </span>.
+    </p>
 
-<div class="contact-info">
-    <p>Contact me at:</p>
-    <ul>
-        <li><strong>Work Email:</strong> <a href="mailto:David.Africa@dsit.gov.uk">David.Africa@dsit.gov.uk</a></li>
-        <li><strong>Instagram:</strong> <a href="https://www.instagram.com/daviddemitriafrica/" target="_blank">instagram.com/daviddemitriafrica/</a></li>
-        <li><strong>GitHub:</strong> <a href="https://github.com/DavidDemitriAfrica/" target="_blank">github.com/DavidDemitriAfrica/</a></li>
-        <li><strong>Twitter:</strong> <a href="https://x.com/DavidSmashfrica" target="_blank">twitter.com/DavidSmashfrica</a></li>
-    </ul>
+    <div class="contact-info">
+        <p>Contact me at:</p>
+        <ul>
+            <li><strong>Work Email:</strong> <a href="mailto:David.Africa@dsit.gov.uk">David.Africa@dsit.gov.uk</a></li>
+            <li><strong>Instagram:</strong> <a href="https://www.instagram.com/daviddemitriafrica/" target="_blank">instagram.com/daviddemitriafrica/</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/DavidDemitriAfrica/" target="_blank">github.com/DavidDemitriAfrica/</a></li>
+            <li><strong>Twitter:</strong> <a href="https://x.com/DavidSmashfrica" target="_blank">twitter.com/DavidSmashfrica</a></li>
+        </ul>
+    </div>
 </div>
+
+<script>
+    function expand(element) {
+        // Find the parent span with class "telescope" and mark it as expanded
+        element.parentElement.classList.add("expanded");
+    }
+</script>
