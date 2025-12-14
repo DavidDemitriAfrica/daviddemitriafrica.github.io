@@ -116,44 +116,44 @@ title: "David Demitri Africa"
         const canvas = document.getElementById('swarm-canvas');
         const ctx = canvas.getContext('2d');
 
-        // Show container with fade
         container.style.display = 'block';
         requestAnimationFrame(() => {
             container.style.opacity = '1';
         });
 
-        // Canvas setup
-        const width = Math.min(560, window.innerWidth - 40);
-        const height = 300;
+        const width = Math.min(580, window.innerWidth - 40);
+        const height = 340;
         canvas.width = width;
         canvas.height = height;
         canvas.style.width = width + 'px';
         canvas.style.height = height + 'px';
-        canvas.style.border = '1px solid #e0e0e0';
-        canvas.style.borderRadius = '4px';
-        canvas.style.background = '#fafafa';
+        canvas.style.border = '1px solid #e8e8e8';
+        canvas.style.borderRadius = '6px';
+        canvas.style.background = '#fcfcfc';
 
-        // Boids
-        const NUM_BOIDS = 80;
+        const NUM_BOIDS = 180;
         const boids = [];
+        const connections = []; // fading memories of closeness
 
         class Boid {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 2;
-                this.vy = (Math.random() - 0.5) * 2;
+            constructor(x, y) {
+                this.x = x !== undefined ? x : Math.random() * width;
+                this.y = y !== undefined ? y : Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5;
+                // Each boid has a slight personality - how much they drift vs stay
+                this.independence = Math.random() * 0.3;
+                this.neighborCount = 0;
                 this.history = [];
             }
 
             update(boids) {
-                // Boid rules
                 let sepX = 0, sepY = 0, sepCount = 0;
                 let alignX = 0, alignY = 0, alignCount = 0;
                 let cohX = 0, cohY = 0, cohCount = 0;
 
-                const sepDist = 25;
-                const neighborDist = 70;
+                const sepDist = 18;
+                const neighborDist = 55;
 
                 for (const other of boids) {
                     if (other === this) continue;
@@ -161,14 +161,12 @@ title: "David Demitri Africa"
                     const dy = other.y - this.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
-                    // Separation
                     if (dist < sepDist && dist > 0) {
                         sepX -= dx / dist;
                         sepY -= dy / dist;
                         sepCount++;
                     }
 
-                    // Alignment & Cohesion
                     if (dist < neighborDist) {
                         alignX += other.vx;
                         alignY += other.vy;
@@ -176,96 +174,128 @@ title: "David Demitri Africa"
                         cohX += other.x;
                         cohY += other.y;
                         cohCount++;
+
+                        // Sometimes remember connections that drift apart
+                        if (Math.random() < 0.0003 && dist > 35) {
+                            connections.push({
+                                x1: this.x, y1: this.y,
+                                x2: other.x, y2: other.y,
+                                life: 1.0
+                            });
+                        }
                     }
                 }
 
-                // Apply rules
+                this.neighborCount = alignCount;
+
+                // Different directions at different speeds
+                const drift = this.independence;
+                const social = 1 - drift;
+
                 if (sepCount > 0) {
-                    this.vx += sepX * 0.05;
-                    this.vy += sepY * 0.05;
+                    this.vx += sepX * 0.04 * social;
+                    this.vy += sepY * 0.04 * social;
                 }
                 if (alignCount > 0) {
-                    this.vx += (alignX / alignCount - this.vx) * 0.02;
-                    this.vy += (alignY / alignCount - this.vy) * 0.02;
+                    this.vx += (alignX / alignCount - this.vx) * 0.015 * social;
+                    this.vy += (alignY / alignCount - this.vy) * 0.015 * social;
                 }
                 if (cohCount > 0) {
-                    this.vx += (cohX / cohCount - this.x) * 0.003;
-                    this.vy += (cohY / cohCount - this.y) * 0.003;
+                    this.vx += (cohX / cohCount - this.x) * 0.002 * social;
+                    this.vy += (cohY / cohCount - this.y) * 0.002 * social;
                 }
 
-                // Speed limit
+                // Gentle wandering - everyone drifts a little
+                this.vx += (Math.random() - 0.5) * 0.08;
+                this.vy += (Math.random() - 0.5) * 0.08;
+
+                // Speed limits - some move faster, some slower
                 const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-                const maxSpeed = 2.5;
-                const minSpeed = 0.8;
+                const maxSpeed = 1.8 + this.independence * 0.8;
+                const minSpeed = 0.4;
                 if (speed > maxSpeed) {
                     this.vx = (this.vx / speed) * maxSpeed;
                     this.vy = (this.vy / speed) * maxSpeed;
-                } else if (speed < minSpeed) {
+                } else if (speed < minSpeed && speed > 0) {
                     this.vx = (this.vx / speed) * minSpeed;
                     this.vy = (this.vy / speed) * minSpeed;
                 }
 
-                // Soft boundary steering
-                const margin = 50;
-                const turnForce = 0.15;
+                // Soft boundaries
+                const margin = 40;
+                const turnForce = 0.08;
                 if (this.x < margin) this.vx += turnForce;
                 if (this.x > width - margin) this.vx -= turnForce;
                 if (this.y < margin) this.vy += turnForce;
                 if (this.y > height - margin) this.vy -= turnForce;
 
-                // Update position
                 this.x += this.vx;
                 this.y += this.vy;
 
-                // Wrap edges (fallback)
-                if (this.x < 0) this.x = width;
-                if (this.x > width) this.x = 0;
-                if (this.y < 0) this.y = height;
-                if (this.y > height) this.y = 0;
+                // Wrap edges
+                if (this.x < -10) this.x = width + 10;
+                if (this.x > width + 10) this.x = -10;
+                if (this.y < -10) this.y = height + 10;
+                if (this.y > height + 10) this.y = -10;
 
-                // Store history for trail
+                // Trail history
                 this.history.push({x: this.x, y: this.y});
-                if (this.history.length > 8) this.history.shift();
+                if (this.history.length > 12) this.history.shift();
             }
 
             draw(ctx) {
-                // Draw trail
-                if (this.history.length > 1) {
-                    ctx.beginPath();
-                    ctx.moveTo(this.history[0].x, this.history[0].y);
+                // Trail - fades out
+                if (this.history.length > 2) {
                     for (let i = 1; i < this.history.length; i++) {
-                        ctx.lineTo(this.history[i].x, this.history[i].y);
+                        const alpha = (i / this.history.length) * 0.25;
+                        const radius = 1.5 * (i / this.history.length);
+                        ctx.beginPath();
+                        ctx.arc(this.history[i].x, this.history[i].y, radius, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(80, 80, 80, ${alpha})`;
+                        ctx.fill();
                     }
-                    ctx.strokeStyle = 'rgba(100, 100, 100, 0.15)';
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
                 }
 
-                // Draw boid as small triangle
-                const angle = Math.atan2(this.vy, this.vx);
-                const size = 5;
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(angle);
+                // The particle itself - opacity reflects connection
+                // More isolated = more faded, like drifting apart
+                const connectedness = Math.min(this.neighborCount / 6, 1);
+                const baseAlpha = 0.3 + connectedness * 0.6;
+                const radius = 2.5 + connectedness * 1;
+
                 ctx.beginPath();
-                ctx.moveTo(size, 0);
-                ctx.lineTo(-size * 0.6, size * 0.5);
-                ctx.lineTo(-size * 0.6, -size * 0.5);
-                ctx.closePath();
-                ctx.fillStyle = '#333';
+                ctx.arc(this.x, this.y, radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(50, 50, 50, ${baseAlpha})`;
                 ctx.fill();
-                ctx.restore();
             }
         }
 
-        // Initialize boids
+        // Initialize - start in loose clusters
         for (let i = 0; i < NUM_BOIDS; i++) {
-            boids.push(new Boid());
+            // Create some initial groupings
+            const clusterX = (Math.floor(Math.random() * 4) + 0.5) * (width / 4);
+            const clusterY = (Math.floor(Math.random() * 3) + 0.5) * (height / 3);
+            const offsetX = (Math.random() - 0.5) * 100;
+            const offsetY = (Math.random() - 0.5) * 80;
+            boids.push(new Boid(clusterX + offsetX, clusterY + offsetY));
         }
 
-        // Animation loop
         function animate() {
-            ctx.clearRect(0, 0, width, height);
+            // Subtle fade instead of clear - leaves ghost trails
+            ctx.fillStyle = 'rgba(252, 252, 252, 0.3)';
+            ctx.fillRect(0, 0, width, height);
+
+            // Draw fading connection memories
+            for (let i = connections.length - 1; i >= 0; i--) {
+                const c = connections[i];
+                ctx.beginPath();
+                ctx.moveTo(c.x1, c.y1);
+                ctx.lineTo(c.x2, c.y2);
+                ctx.strokeStyle = `rgba(150, 150, 150, ${c.life * 0.15})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+                c.life -= 0.008;
+                if (c.life <= 0) connections.splice(i, 1);
+            }
 
             for (const boid of boids) {
                 boid.update(boids);
