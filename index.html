@@ -101,31 +101,34 @@ title: "David Demitri Africa"
         border-bottom-color: #222;
     }
 
-    .headshot-container {
+    .headshot-placeholder {
         width: 180px;
         height: 240px;
         float: right;
         margin: 0 0 1rem 1.5rem;
-        cursor: pointer;
     }
 
-    .headshot-container canvas {
-        width: 100%;
-        height: 100%;
+    #headshot-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 10;
     }
 
     @media (max-width: 500px) {
-        .headshot-container {
+        .headshot-placeholder {
             float: none;
             margin: 0 auto 1.5rem auto;
         }
     }
 </style>
 
+<canvas id="headshot-canvas"></canvas>
 <div>
-    <div class="headshot-container">
-        <canvas id="headshot-canvas"></canvas>
-    </div>
+    <div class="headshot-placeholder" id="headshot-placeholder"></div>
     <p>
         I am a <span class="telescope"><span class="trigger" onclick="expand(this)">researcher.</span><span class="content">researcher in the <span class="telescope"><span class="trigger" onclick="expand(this)">UK.</span><span class="content">UK, at <span class="telescope"><span class="trigger" onclick="expand(this)">AISI.</span><span class="content">the AI Security <span class="telescope"><span class="trigger" onclick="expand(this)">Institute.</span><span class="content">Institute, which is the government's technical body for AI <span class="telescope"><span class="trigger" onclick="expand(this)">safety.</span><span class="content">safety research and evaluation.</span></span></span></span></span></span></span></span></span></span> I study <span class="telescope"><span class="trigger" onclick="expand(this)">alignment.</span><span class="content">alignment, specifically how models <span class="telescope"><span class="trigger" onclick="expand(this)">fail.</span><span class="content">fail to do what we <span class="telescope"><span class="trigger" onclick="expand(this)">want.</span><span class="content">want, or do it for the wrong <span class="telescope"><span class="trigger" onclick="expand(this)">reasons.</span><span class="content">reasons: consistency <span class="telescope"><span class="trigger" onclick="expand(this)">training.</span><span class="content">training, evaluation <span class="telescope"><span class="trigger" onclick="expand(this)">awareness.</span><span class="content">awareness, <span class="telescope"><span class="trigger" onclick="expand(this)">introspection.</span><span class="content">introspection, and unintended <span class="telescope"><span class="trigger" onclick="expand(this)">generalization.</span><span class="content">generalization, the way a child might learn that stoves are dangerous only when they're red, not when they're <span class="telescope"><span class="trigger" onclick="expand(this)">hot.</span><span class="content">hot, which is <span class="telescope"><span class="trigger" onclick="expand(this)">fine.</span><span class="content">fine until it isn't.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span> I live in <span class="telescope"><span class="trigger" onclick="expand(this)">London.</span><span class="content">London, and I see Big Ben and Westminster Abbey on my way to <span class="telescope"><span class="trigger" onclick="expand(this)">work.</span><span class="content">work, which still surprises me <span class="telescope"><span class="trigger" onclick="expand(this)">sometimes.</span><span class="content">sometimes, the way a place can become home without you deciding it.</span></span></span></span></span></span> I'm from the <span class="telescope"><span class="trigger" onclick="expand(this)">Philippines.</span><span class="content">Philippines, and I still miss it.</span></span>
     </p>
@@ -364,16 +367,11 @@ title: "David Demitri Africa"
         animate();
     }
 
-    // Particle headshot effect
+    // Particle headshot effect - fullscreen canvas
     (function() {
         const canvas = document.getElementById('headshot-canvas');
         const ctx = canvas.getContext('2d');
-        const container = canvas.parentElement;
-
-        const WIDTH = 360;
-        const HEIGHT = 480;
-        canvas.width = WIDTH;
-        canvas.height = HEIGHT;
+        const placeholder = document.getElementById('headshot-placeholder');
 
         const PARTICLE_GAP = 2;
         const PARTICLE_SIZE = 2;
@@ -381,7 +379,23 @@ title: "David Demitri Africa"
         let isScattered = false;
         let mouseX = -1000;
         let mouseY = -1000;
-        const MOUSE_RADIUS = 120;
+        const MOUSE_RADIUS = 80;
+
+        // Headshot dimensions (within placeholder)
+        const IMG_W = 180;
+        const IMG_H = 240;
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        function getPlaceholderPos() {
+            const rect = placeholder.getBoundingClientRect();
+            return { x: rect.left, y: rect.top };
+        }
 
         const img = new Image();
         img.crossOrigin = 'anonymous';
@@ -390,37 +404,36 @@ title: "David Demitri Africa"
         img.onload = function() {
             const tempCanvas = document.createElement('canvas');
             const tempCtx = tempCanvas.getContext('2d');
-            tempCanvas.width = WIDTH;
-            tempCanvas.height = HEIGHT;
+            tempCanvas.width = IMG_W;
+            tempCanvas.height = IMG_H;
 
-            // Scale to fit
-            const scale = Math.min(WIDTH / img.width, HEIGHT / img.height);
+            // Scale to fit placeholder
+            const scale = Math.min(IMG_W / img.width, IMG_H / img.height);
             const drawW = img.width * scale;
             const drawH = img.height * scale;
-            const offsetX = (WIDTH - drawW) / 2;
-            const offsetY = (HEIGHT - drawH) / 2;
+            const offsetX = (IMG_W - drawW) / 2;
+            const offsetY = (IMG_H - drawH) / 2;
 
             tempCtx.drawImage(img, offsetX, offsetY, drawW, drawH);
-            const imageData = tempCtx.getImageData(0, 0, WIDTH, HEIGHT);
+            const imageData = tempCtx.getImageData(0, 0, IMG_W, IMG_H);
             const data = imageData.data;
 
-            for (let y = 0; y < HEIGHT; y += PARTICLE_GAP) {
-                for (let x = 0; x < WIDTH; x += PARTICLE_GAP) {
-                    const i = (y * WIDTH + x) * 4;
+            for (let y = 0; y < IMG_H; y += PARTICLE_GAP) {
+                for (let x = 0; x < IMG_W; x += PARTICLE_GAP) {
+                    const i = (y * IMG_W + x) * 4;
                     const r = data[i];
                     const g = data[i + 1];
                     const b = data[i + 2];
                     const a = data[i + 3];
 
-                    // Only create particles for non-transparent pixels
                     if (a > 128) {
                         particles.push({
-                            origX: x,
-                            origY: y,
-                            x: x,
-                            y: y,
-                            targetX: x,
-                            targetY: y,
+                            localX: x,
+                            localY: y,
+                            x: 0,
+                            y: 0,
+                            targetX: 0,
+                            targetY: 0,
                             vx: 0,
                             vy: 0,
                             color: `rgb(${r},${g},${b})`
@@ -429,54 +442,71 @@ title: "David Demitri Africa"
                 }
             }
 
+            // Set initial positions
+            updateOrigins();
             render();
         };
+
+        function updateOrigins() {
+            const pos = getPlaceholderPos();
+            for (const p of particles) {
+                const origX = pos.x + p.localX;
+                const origY = pos.y + p.localY;
+                if (!isScattered) {
+                    p.targetX = origX;
+                    p.targetY = origY;
+                }
+                p.origX = origX;
+                p.origY = origY;
+                if (p.x === 0 && p.y === 0) {
+                    p.x = origX;
+                    p.y = origY;
+                }
+            }
+        }
+
+        window.addEventListener('scroll', updateOrigins);
+        window.addEventListener('resize', updateOrigins);
 
         function scatter() {
             isScattered = true;
             for (const p of particles) {
                 const angle = Math.random() * Math.PI * 2;
-                const dist = 200 + Math.random() * 300;
+                const dist = 300 + Math.random() * 500;
                 p.targetX = p.origX + Math.cos(angle) * dist;
                 p.targetY = p.origY + Math.sin(angle) * dist;
-                p.vx = (Math.random() - 0.5) * 8;
-                p.vy = (Math.random() - 0.5) * 8;
+                p.vx = (Math.random() - 0.5) * 15;
+                p.vy = (Math.random() - 0.5) * 15;
             }
         }
 
         function reform() {
             isScattered = false;
-            for (const p of particles) {
-                p.targetX = p.origX;
-                p.targetY = p.origY;
-            }
+            updateOrigins();
         }
 
         function render() {
-            ctx.clearRect(0, 0, WIDTH, HEIGHT);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             for (const p of particles) {
-                // Mouse repulsion - strong and responsive
+                // Mouse repulsion
                 const mdx = p.x - mouseX;
                 const mdy = p.y - mouseY;
                 const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
                 if (mDist < MOUSE_RADIUS && mDist > 0) {
                     const force = (MOUSE_RADIUS - mDist) / MOUSE_RADIUS;
-                    const push = force * force * 12;
+                    const push = force * force * 8;
                     p.vx += (mdx / mDist) * push;
                     p.vy += (mdy / mDist) * push;
                 }
 
-                // Return to origin - gentle
                 const dx = p.targetX - p.x;
                 const dy = p.targetY - p.y;
-                const ease = isScattered ? 0.02 : 0.05;
+                const ease = isScattered ? 0.015 : 0.08;
                 p.vx += dx * ease;
                 p.vy += dy * ease;
-
-                // Damping
-                p.vx *= 0.92;
-                p.vy *= 0.92;
+                p.vx *= 0.9;
+                p.vy *= 0.9;
 
                 p.x += p.vx;
                 p.y += p.vy;
@@ -488,20 +518,13 @@ title: "David Demitri Africa"
             requestAnimationFrame(render);
         }
 
-        container.addEventListener('mousemove', function(e) {
-            const rect = canvas.getBoundingClientRect();
-            const scaleX = WIDTH / rect.width;
-            const scaleY = HEIGHT / rect.height;
-            mouseX = (e.clientX - rect.left) * scaleX;
-            mouseY = (e.clientY - rect.top) * scaleY;
+        document.addEventListener('mousemove', function(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         });
 
-        container.addEventListener('mouseleave', function() {
-            mouseX = -1000;
-            mouseY = -1000;
-        });
-
-        container.addEventListener('click', function() {
+        placeholder.style.cursor = 'pointer';
+        placeholder.addEventListener('click', function() {
             if (isScattered) {
                 reform();
             } else {
@@ -509,7 +532,7 @@ title: "David Demitri Africa"
             }
         });
 
-        container.addEventListener('touchstart', function(e) {
+        placeholder.addEventListener('touchstart', function(e) {
             e.preventDefault();
             if (isScattered) {
                 reform();
