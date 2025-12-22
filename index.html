@@ -385,7 +385,7 @@ title: "David Demitri Africa"
 
         const img = new Image();
         img.crossOrigin = 'anonymous';
-        img.src = '/assets/headshot.jpeg';
+        img.src = '/assets/cutout.png';
 
         img.onload = function() {
             const tempCanvas = document.createElement('canvas');
@@ -410,11 +410,10 @@ title: "David Demitri Africa"
                     const r = data[i];
                     const g = data[i + 1];
                     const b = data[i + 2];
+                    const a = data[i + 3];
 
-                    // Skip white/near-white pixels (the cutout background)
-                    if (r > 245 && g > 245 && b > 245) continue;
-
-                    if (r + g + b > 0) {
+                    // Only create particles for non-transparent pixels
+                    if (a > 128) {
                         particles.push({
                             origX: x,
                             origY: y,
