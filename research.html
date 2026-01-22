@@ -10,74 +10,18 @@ title: "Research - David Demitri Africa"
 <ol class="research-list">
   <li>
     <h3 class="research-title">
-      <a href="https://doi.org/10.1063/5.0166785" target="_blank" rel="noopener">Lag and Duration of Leader–Follower Relationships in Mixed Traffic Using Causal Inference</a>
+      <a href="https://arxiv.org/abs/2601.10160" target="_blank" rel="noopener">Alignment Pretraining: AI Discourse Causes Self-Fulfilling (Mis)alignment</a>
     </h3>
-    <p><strong>Summary:</strong> This paper implements a causal inference approach to analyze leader-follower dynamics in an arterial road in Chennai, India. We quantify the temporal lag and duration of interactions using transfer entropy metrics.</p>
-    <p><strong>My thoughts:</strong> This was my first paper. I learned a lot about how to write research in general from here, and in the future I think I would like to do more papers in this style—analyzing some weird real world phenomenon with an interesting method. Published in Chaos.</p>
+    <p><strong>Summary:</strong> Investigates how AI discourse in pretraining data can cause self-fulfilling alignment or misalignment in language models.</p>
+    <p><strong>My thoughts:</strong> I advised this project. Possibly the start of a new field? Other than the copious use of Isambard, I was mostly surprised that midtraining effects were so dominant here.</p>
   </li>
 
   <li>
     <h3 class="research-title">
-      <a href="https://doi.org/10.1098/rsif.2025.0187" target="_blank" rel="noopener">Herding as an emergent behaviour in harem groups of feral Garrano ponies</a>
+      <a href="https://arxiv.org/abs/2511.23092" target="_blank" rel="noopener">Does Self-Evaluation Enable Wireheading in Language Models?</a>
     </h3>
-    <p><strong>Summary:</strong> We use transfer entropy to measure herding in a harem group of feral Garrano ponies in Serra D'Arga, Portugal. We characterize leader-follower relationships, validate transfer entropy against traditional clustering methods, and provide evidence that herding emerges through indirect propagation of leadership influence among mares.</p>
-    <p><strong>My thoughts:</strong> I did it for fun, and it started out of an idle conversation with my supervisor. Published in Journal of The Royal Society Interface.</p>
-  </li>
-
-  <li>
-    <h3 class="research-title">
-      <a href="https://aclanthology.org/2025.acl-long.1509/" target="_blank" rel="noopener">Batayan: A Filipino NLP benchmark for evaluating Large Language Models</a>
-    </h3>
-    <p><strong>Summary:</strong> This paper introduces Batayan, a benchmark to evaluate LLMs on NLP tasks in Filipino.</p>
-    <p><strong>My thoughts:</strong> Most of the work here was in actually writing/re-translating the entries. Would be nice to do some in-depth error analysis ala Parser Showdown at the Wall Street Corral. Published in ACL 2025 Main Conference.</p>
-  </li>
-
-  <li>
-    <h3 class="research-title">
-      <a href="https://arxiv.org/abs/2506.22105" target="_blank" rel="noopener">Identifying a Circuit for Verb Conjugation in GPT-2</a>
-    </h3>
-    <p><strong>Summary:</strong> Looking for a circuit in GPT-2 that does subject-verb agreement. We find one, but it gets progressively larger as the SVA task gets more complicated.</p>
-    <p><strong>My thoughts:</strong> Final project for L193: Explainable Artificial Intelligence. Thinking of a place to submit this.</p>
-  </li>
-
-  <li>
-    <h3 class="research-title">
-      <a href="https://arxiv.org/abs/2506.23679" target="_blank" rel="noopener">Learning Modular Exponentiation with Transformers</a>
-    </h3>
-    <p><strong>Summary:</strong> We teach a small 4-layer transformer modular exponentiation. PCA on embeddings doesn't show any clear structure, but we do find a cool example of grokking by multiples of moduli. Also, we find a small circuit that performs regular/normal exponentiation.</p>
-    <p><strong>My thoughts:</strong> Final project for R252: Theory of Deep Learning. Thinking of a place to submit this.</p>
-  </li>
-
-  <li>
-    <h3 class="research-title">
-      <a href="https://arxiv.org/abs/2508.02189" target="_blank" rel="noopener">Learning Dynamics of Meta-Learning in Small Model Pretraining</a>
-    </h3>
-    <p><strong>Summary:</strong> If you replace half of the steps in language model pretraining with a meta-task, what does the model learn? Model achieves better loss, improves the vanilla model's F1 on NER, and has this really interesting phase transition.</p>
-    <p><strong>My thoughts:</strong> This is one half of my MPhil thesis. Really proud of Figure 6 here.</p>
-  </li>
-
-  <li>
-    <h3 class="research-title">
-      <a href="https://arxiv.org/abs/2509.02160" target="_blank" rel="noopener">Meta-Pretraining for Zero-Shot Cross-Lingual Named Entity Recognition in Low-Resource Philippine Languages</a>
-    </h3>
-    <p><strong>Summary:</strong> At what point in pretraining does meta-pretraining start to improve zero-shot cross-lingual named entity recognition (NER) in Filipino and Tagalog? If you fine-tune every checkpoint from pretraining step 0 to 6000, you find some actual reuse of knowledge from the model's backbone.</p>
-    <p><strong>My thoughts:</strong> This is the other half of my MPhil thesis. Have submitted this to a workshop somewhere. I think Figures 4 to 7 look nice.</p>
-  </li>
-
-  <li>
-    <h3 class="research-title">
-      <a href="https://arxiv.org/abs/2509.10625" target="_blank" rel="noopener">No Answer Needed: Predicting LLM Answer Accuracy from Question-Only Linear Probes</a>
-    </h3>
-    <p><strong>Summary:</strong> Can we predict the accuracy of LLM answers using model internals, even before the answer is generated? We find that a simple linear probe on activations can achieve surprisingly good performance.</p>
-    <p><strong>My thoughts:</strong> Worked on this with MARS 2.0 people. Nice graphs.</p>
-  </li>
-
-  <li>
-    <h3 class="research-title">
-      <a href="https://arxiv.org/abs/2509.12960v1" target="_blank" rel="noopener">Investigating ReLoRA: Effects on the Learning Dynamics of Small Language Models</a>
-    </h3>
-    <p><strong>Summary:</strong> We study the effects of ReLoRA on the learning dynamics of small language models. Our experiments show that ReLoRA isn't that helpful.</p>
-    <p><strong>My thoughts:</strong> Yuval's thesis. I like the conclusions.</p>
+    <p><strong>Summary:</strong> We investigate the potential for wireheading in language models through self-evaluation mechanisms. We find that self-evaluation can inadvertently lead to wireheading, and formalize some conditions under which this occurs.</p>
+    <p><strong>My thoughts:</strong> I wrote this as a way to upskill in agent foundations research, and ended up with something paper shaped.</p>
   </li>
 
   <li>
@@ -90,20 +34,91 @@ title: "Research - David Demitri Africa"
 
   <li>
     <h3 class="research-title">
-      <a href="https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/68fb86aa2c3b1b7ea6251cc1_Understanding%20AI%20Trajectories%20(24_10%20update).pdf" target="_blank" rel="noopener">Understanding AI Trajectories:
-Mapping the Limitations of Current AI Systems</a>
+      <a href="https://arxiv.org/abs/2509.16413" target="_blank" rel="noopener">Pico: A Modular Framework for Hypothesis-Driven Small Language Model Research</a>
+    </h3>
+    <p><strong>Summary:</strong> A lightweight, modular framework that enables systematic, hypothesis-driven research for small and medium-scale language model development. Published in EMNLP 2025.</p>
+    <p><strong>My thoughts:</strong> A nice, cool, modular framework that allows you to pretrain language models easily. I used this to do my MAML in pretraining experiments.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2509.12960" target="_blank" rel="noopener">Investigating ReLoRA: Effects on the Learning Dynamics of Small Language Models</a>
+    </h3>
+    <p><strong>Summary:</strong> We study the effects of ReLoRA on the learning dynamics of small language models. Our experiments show that ReLoRA isn't that helpful.</p>
+    <p><strong>My thoughts:</strong> Yuval's thesis. I like the conclusions.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2509.10625" target="_blank" rel="noopener">No Answer Needed: Predicting LLM Answer Accuracy from Question-Only Linear Probes</a>
+    </h3>
+    <p><strong>Summary:</strong> Can we predict the accuracy of LLM answers using model internals, even before the answer is generated? We find that a simple linear probe on activations can achieve surprisingly good performance.</p>
+    <p><strong>My thoughts:</strong> Worked on this with MARS 2.0 people. Nice graphs.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2509.02160" target="_blank" rel="noopener">Meta-Pretraining for Zero-Shot Cross-Lingual Named Entity Recognition in Low-Resource Philippine Languages</a>
+    </h3>
+    <p><strong>Summary:</strong> At what point in pretraining does meta-pretraining start to improve zero-shot cross-lingual named entity recognition (NER) in Filipino and Tagalog? If you fine-tune every checkpoint from pretraining step 0 to 6000, you find some actual reuse of knowledge from the model's backbone.</p>
+    <p><strong>My thoughts:</strong> This is the other half of my MPhil thesis. Have submitted this to a workshop somewhere. I think Figures 4 to 7 look nice.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2508.02189" target="_blank" rel="noopener">Learning Dynamics of Meta-Learning in Small Model Pretraining</a>
+    </h3>
+    <p><strong>Summary:</strong> If you replace half of the steps in language model pretraining with a meta-task, what does the model learn? Model achieves better loss, improves the vanilla model's F1 on NER, and has this really interesting phase transition.</p>
+    <p><strong>My thoughts:</strong> This is one half of my MPhil thesis. Really proud of Figure 6 here.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://aclanthology.org/2025.acl-long.1509/" target="_blank" rel="noopener">Batayan: A Filipino NLP benchmark for evaluating Large Language Models</a>
+    </h3>
+    <p><strong>Summary:</strong> This paper introduces Batayan, a benchmark to evaluate LLMs on NLP tasks in Filipino.</p>
+    <p><strong>My thoughts:</strong> Most of the work here was in actually writing/re-translating the entries. Would be nice to do some in-depth error analysis ala Parser Showdown at the Wall Street Corral. Published in ACL 2025 Main Conference.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2506.23679" target="_blank" rel="noopener">Learning Modular Exponentiation with Transformers</a>
+    </h3>
+    <p><strong>Summary:</strong> We teach a small 4-layer transformer modular exponentiation. PCA on embeddings doesn't show any clear structure, but we do find a cool example of grokking by multiples of moduli. Also, we find a small circuit that performs regular/normal exponentiation.</p>
+    <p><strong>My thoughts:</strong> Final project for R252: Theory of Deep Learning. Thinking of a place to submit this.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2506.22105" target="_blank" rel="noopener">Identifying a Circuit for Verb Conjugation in GPT-2</a>
+    </h3>
+    <p><strong>Summary:</strong> Looking for a circuit in GPT-2 that does subject-verb agreement. We find one, but it gets progressively larger as the SVA task gets more complicated.</p>
+    <p><strong>My thoughts:</strong> Final project for L193: Explainable Artificial Intelligence. Thinking of a place to submit this.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://doi.org/10.1098/rsif.2025.0187" target="_blank" rel="noopener">Herding as an emergent behaviour in harem groups of feral Garrano ponies</a>
+    </h3>
+    <p><strong>Summary:</strong> We use transfer entropy to measure herding in a harem group of feral Garrano ponies in Serra D'Arga, Portugal. We characterize leader-follower relationships, validate transfer entropy against traditional clustering methods, and provide evidence that herding emerges through indirect propagation of leadership influence among mares.</p>
+    <p><strong>My thoughts:</strong> I did it for fun, and it started out of an idle conversation with my supervisor. Published in Journal of The Royal Society Interface.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/68fb86aa2c3b1b7ea6251cc1_Understanding%20AI%20Trajectories%20(24_10%20update).pdf" target="_blank" rel="noopener">Understanding AI Trajectories: Mapping the Limitations of Current AI Systems</a>
     </h3>
     <p><strong>Summary:</strong> A comprehensive overview of the current limitations of AI systems on the way to AGI. Nice taxonomy of factors.</p>
     <p><strong>My thoughts:</strong> I was only a minor contributor here, giving detailed review and helping write substantial portions of the continual learning section.</p>
   </li>
 
   <li>
-  <h3 class="research-title">
-    <a href="https://arxiv.org/abs/2511.23092" target="_blank" rel="noopener">Does Self-Evaluation Enable Wireheading in Language Models?</a>
-  </h3>
-  <p><strong>Summary:</strong> We investigate the potential for wireheading in language models through self-evaluation mechanisms. We find that self-evaluation can inadvertently lead to wireheading, and formalize some conditions under which this occurs.</p>
-  <p><strong>My thoughts:</strong> I wrote this as a way to upskill in agent foundations research, and ended up with something paper shaped.</p>
-</li>
+    <h3 class="research-title">
+      <a href="https://doi.org/10.1063/5.0166785" target="_blank" rel="noopener">Lag and Duration of Leader–Follower Relationships in Mixed Traffic Using Causal Inference</a>
+    </h3>
+    <p><strong>Summary:</strong> This paper implements a causal inference approach to analyze leader-follower dynamics in an arterial road in Chennai, India. We quantify the temporal lag and duration of interactions using transfer entropy metrics.</p>
+    <p><strong>My thoughts:</strong> This was my first paper. I learned a lot about how to write research in general from here, and in the future I think I would like to do more papers in this style—analyzing some weird real world phenomenon with an interesting method. Published in Chaos.</p>
+  </li>
 
 </ol>
 
