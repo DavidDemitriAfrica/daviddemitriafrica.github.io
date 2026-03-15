@@ -56,15 +56,15 @@ a:hover, a:focus,
 
 /* ===== HEADER & NAV ===== */
 header {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--border);
 }
 
 header h2 {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 1.6rem;
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.25rem;
 }
 
 header h2 a {
