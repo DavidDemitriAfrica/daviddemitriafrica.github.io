@@ -3,101 +3,6 @@ layout: default
 title: "David Demitri Africa"
 ---
 
-<style>
-    body {
-        font-family: 'Georgia', 'Times New Roman', serif;
-        line-height: 1.7;
-        font-size: 17px;
-        color: #222;
-        margin: 50px auto; 
-        max-width: 600px; 
-        padding: 0 20px;
-    }
-
-    .trigger {
-        cursor: pointer;
-        color: #222;
-        text-decoration: none;
-        border-bottom: 1.5px solid #999;
-        transition: border-color 0.2s, background 0.2s;
-    }
-
-    .trigger:hover {
-        background-color: #f0f0f0;
-        border-bottom-color: #444;
-    }
-
-    .content {
-        display: none;
-        opacity: 0;
-    }
-
-    .expanded > .trigger {
-        border-bottom: none;
-        cursor: default;
-    }
-
-    .expanded > .content {
-        display: inline;
-        animation: fade 0.5s forwards;
-    }
-
-    @keyframes fade {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    
-    .contact-info {
-        margin-top: 3rem;
-        border-top: 1px solid #ddd;
-        padding-top: 1.5rem;
-        font-size: 0.9rem;
-    }
-    
-    .contact-info ul {
-        list-style: none;
-        padding: 0;
-    }
-    
-    .contact-info li {
-        margin: 0.4rem 0;
-    }
-    
-    .contact-info a {
-        color: #222;
-        text-decoration: none;
-        border-bottom: 1px solid #999;
-    }
-    
-    .contact-info a:hover {
-        border-bottom-color: #222;
-    }
-
-    .headshot-placeholder {
-        width: 180px;
-        height: 240px;
-        float: right;
-        margin: 0 0 1rem 1.5rem;
-    }
-
-    #headshot-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none;
-        z-index: 10;
-    }
-
-    @media (max-width: 500px) {
-        .headshot-placeholder {
-            float: none;
-            margin: 0 auto 1.5rem auto;
-        }
-    }
-</style>
-
 <canvas id="headshot-canvas"></canvas>
 <div>
     <div class="headshot-placeholder" id="headshot-placeholder"></div>
@@ -115,7 +20,7 @@ title: "David Demitri Africa"
 
     <div id="swarm-container" style="display: none; margin-top: 2rem; opacity: 0; transition: opacity 1s ease-in;">
         <canvas id="swarm-canvas"></canvas>
-        <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem; font-style: italic;">the physics of crowds and flocks—less about individuals than the space between them</p>
+        <p>the physics of crowds and flocks—less about individuals than the space between them</p>
     </div>
 
     <div class="contact-info">
@@ -152,7 +57,7 @@ title: "David Demitri Africa"
         canvas.style.width = width + 'px';
         canvas.style.height = height + 'px';
         canvas.style.borderRadius = '4px';
-        canvas.style.background = '#fafafa';
+        canvas.style.background = '#ebe5d9';
 
         const NUM_PARTICLES = 400;
         const TRAIL_LENGTH = 10;
@@ -286,7 +191,7 @@ title: "David Demitri Africa"
                     for (let i = 1; i < this.trail.length; i++) {
                         ctx.lineTo(this.trail[i].x, this.trail[i].y);
                     }
-                    ctx.strokeStyle = 'rgba(80, 90, 100, 0.15)';
+                    ctx.strokeStyle = 'rgba(100, 70, 40, 0.15)';
                     ctx.lineWidth = 1;
                     ctx.stroke();
                 }
@@ -294,7 +199,7 @@ title: "David Demitri Africa"
                 // Draw particle
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(60, 70, 80, 0.6)';
+                ctx.fillStyle = 'rgba(80, 50, 20, 0.6)';
                 ctx.fill();
             }
         }
@@ -308,7 +213,7 @@ title: "David Demitri Africa"
             time += 0.02;
 
             // Fade previous frame
-            ctx.fillStyle = 'rgba(250, 250, 250, 0.2)';
+            ctx.fillStyle = 'rgba(235, 229, 217, 0.2)';
             ctx.fillRect(0, 0, width, height);
 
             // Rebuild spatial grid
