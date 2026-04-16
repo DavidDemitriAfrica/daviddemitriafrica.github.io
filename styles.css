@@ -11,19 +11,6 @@
     --border:         #d4cfc3;
 }
 
-/* ===== DARK THEME ===== */
-[data-theme="dark"] {
-    --bg-primary:   #1a1a1a;
-    --bg-secondary: #252525;
-    --text-primary:   #e0ddd5;
-    --text-secondary: #b0ada5;
-    --text-muted:     #8a8780;
-    --accent:         #c4915a;
-    --accent-hover:   #d4a16a;
-    --accent-bg:      rgba(196, 145, 90, 0.1);
-    --border:         #3a3730;
-}
-
 /* ===== BASE ===== */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -69,36 +56,11 @@ a:hover, a:focus,
     background: var(--accent-bg);
 }
 
-/* ===== SKIP LINK ===== */
-.skip-link {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    background: var(--accent);
-    color: var(--bg-primary);
-    padding: 0.5rem 1rem;
-    z-index: 100;
-    border-bottom: none;
-    font-size: 0.9rem;
-}
-
-.skip-link:focus {
-    top: 0;
-    background: var(--accent);
-    color: var(--bg-primary);
-}
-
 /* ===== HEADER & NAV ===== */
 header {
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--border);
-}
-
-.header-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
 }
 
 header h2 {
@@ -139,30 +101,6 @@ nav a:hover, nav a:focus {
 nav a.nav-active {
     color: var(--accent);
     border-bottom: 2px solid var(--accent);
-}
-
-/* ===== DARK MODE TOGGLE ===== */
-.theme-toggle {
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
-    font-size: 1.1rem;
-    line-height: 1;
-    cursor: pointer;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: color 0.2s, border-color 0.2s;
-}
-
-.theme-toggle:hover,
-.theme-toggle:focus {
-    color: var(--accent);
-    border-color: var(--accent);
 }
 
 /* ===== FOOTER ===== */
@@ -487,7 +425,7 @@ footer {
         max-width: 100%;
     }
 
-    nav, footer, #headshot-canvas, #swarm-container, .theme-toggle, .skip-link {
+    nav, footer, #headshot-canvas, #swarm-container {
         display: none;
     }
 
