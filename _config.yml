@@ -1,0 +1,8 @@
+title: "David Demitri Africa"
+description: "AI alignment researcher at UK AISI"
+url: "https://daviddemitriafrica.github.io"
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+feed:
+  path: feed.xml
