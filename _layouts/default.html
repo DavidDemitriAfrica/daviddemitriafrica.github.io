@@ -40,6 +40,19 @@
         function expand(element) {
             element.parentElement.classList.add("expanded");
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll(".trigger").forEach(function(el) {
+                el.setAttribute("tabindex", "0");
+                el.setAttribute("role", "button");
+                el.addEventListener("keydown", function(e) {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        expand(el);
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>

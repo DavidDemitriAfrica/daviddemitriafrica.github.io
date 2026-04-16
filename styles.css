@@ -96,6 +96,11 @@ nav a:hover, nav a:focus {
     background: none;
 }
 
+nav a.nav-active {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+}
+
 /* ===== FOOTER ===== */
 footer {
     margin-top: 3rem;
@@ -128,6 +133,15 @@ footer {
 @keyframes smoothFade {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+@keyframes triggerPulse {
+    0%, 100% { background: transparent; }
+    50%      { background: rgba(139, 69, 19, 0.08); }
+}
+
+.telescope:not(.expanded) > .trigger {
+    animation: triggerPulse 1.5s ease-in-out 2s 2;
 }
 
 /* ===== CONTACT INFO ===== */
@@ -262,6 +276,31 @@ footer {
     font-size: 0.9rem;
 }
 
+/* ===== RUSSIAN BLOG ===== */
+.russian-blog-posts article {
+    margin: 0 0 2rem 0;
+    padding: 0 0 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.russian-blog-posts article:last-child {
+    border-bottom: 0;
+}
+
+.russian-blog-posts h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    margin: 0 0 0.5rem;
+}
+
+.russian-blog-posts p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
 /* ===== CV ===== */
 .cv-download {
     display: inline-block;
@@ -270,7 +309,7 @@ footer {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 500px) {
+@media (max-width: 640px) {
     body {
         font-size: 16px;
         margin: 30px auto;
