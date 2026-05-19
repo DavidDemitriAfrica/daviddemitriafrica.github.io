@@ -1,14 +1,35 @@
 ---
 layout: default
-title: "Blog - David Demitri Africa"
-description: "Selected posts on AI alignment, evaluation awareness, and learning theory from LessWrong."
+title: "Notes and Posts - David Demitri Africa"
+description: "Notes, half-formed thoughts, and selected LessWrong posts on AI alignment, evaluation awareness, and learning theory."
 ---
 
-<h1>Blog</h1>
+<h1>Notes and Posts</h1>
 
-<p>Selected posts from <a href="https://www.lesswrong.com/users/david-africa">LessWrong</a>.</p>
+<p>A mix of short notes (hosted here) and longer posts on <a href="https://www.lesswrong.com/users/david-africa">LessWrong</a>. Sorted by date.</p>
 
 <ul class="blog-list">
+
+  <li>
+    <span class="blog-date">May 11, 2026</span>
+    <h2 class="blog-title"><a href="/notes/using-an-llm-to-explain-itself.html">Using an LLM to explain itself, and the limitations of such methods</a></h2>
+    <p class="blog-excerpt">Right now, we are seeing this exciting line of work where you train a model to explain itself (such as introspection adapters, diff instruction tuning) or a different model (natural language autoencoders, activation verbalizers, activation oracles, etc.). Why this is exciting&mdash;and the reasons to be worried.</p>
+    <a class="blog-read-more" href="/notes/using-an-llm-to-explain-itself.html">Read note &rarr;</a>
+  </li>
+
+  <li>
+    <span class="blog-date">May 7, 2026</span>
+    <h2 class="blog-title"><a href="/notes/taste-is-saying-obvious-things.html">Taste = saying things that are obvious</a></h2>
+    <p class="blog-excerpt">Geoffrey Irving, who may be the highest taste person I interact with semi-regularly, has repeatedly said that he does not consider the takes he says to be special, he just says things that seem obvious to him. And yet these takes for me are pretty high value, and often change how I think about things.</p>
+    <a class="blog-read-more" href="/notes/taste-is-saying-obvious-things.html">Read note &rarr;</a>
+  </li>
+
+  <li>
+    <span class="blog-date">April 29, 2026</span>
+    <h2 class="blog-title"><a href="/notes/eval-awareness-about-eval-awareness.html">Eval awareness about being eval aware (EA)?</a></h2>
+    <p class="blog-excerpt">Playing around with LLMs, it seems that they guess a lot of the time that they are in an evaluation to specifically test eval awareness. I think this type of second-level conditioning might elicit a separate response from just being in an evaluation.</p>
+    <a class="blog-read-more" href="/notes/eval-awareness-about-eval-awareness.html">Read note &rarr;</a>
+  </li>
 
   <li>
     <span class="blog-date">April 23, 2026</span>
@@ -53,6 +74,13 @@ description: "Selected posts on AI alignment, evaluation awareness, and learning
   </li>
 
   <li>
+    <span class="blog-date">February 19, 2026</span>
+    <h2 class="blog-title"><a href="/notes/notes-on-text-has-curvature.html">Notes on <em>Text has curvature</em></a></h2>
+    <p class="blog-excerpt">A reading of Zucchet et al.&rsquo;s formalism for the curvature of natural language. If you combine left- and right-context evidence about a blanked word, sometimes they focus down to a single answer (positive curvature), sometimes they fan out (negative curvature)&mdash;and the geometric analogy is doing real work.</p>
+    <a class="blog-read-more" href="/notes/notes-on-text-has-curvature.html">Read note &rarr;</a>
+  </li>
+
+  <li>
     <span class="blog-date">February 5, 2026</span>
     <h2 class="blog-title"><a href="https://www.lesswrong.com/posts/CpvZ6HkhvcAgFydCA/a-proposal-for-truesightbench">A Proposal for TruesightBench</a></h2>
     <p class="blog-excerpt">A benchmark for evaluating "truesight," where LLMs infer specific information about a text's author&mdash;such as native language, profession, or device used&mdash;from features not explicitly present in the content. The mechanism is not mysterious: a model trained to predict the next token learns that the strongest predictor of which tokens come next is who is writing.</p>
@@ -64,6 +92,20 @@ description: "Selected posts on AI alignment, evaluation awareness, and learning
     <h2 class="blog-title"><a href="https://www.lesswrong.com/posts/cGheHMeGjTqivAfCk/massive-activations-in-drope-evidence-for-attention">Massive Activations in DroPE: Evidence for Attention Reorganization</a></h2>
     <p class="blog-excerpt">DroPE models significantly reduce reliance on "massive values"&mdash;concentrated large activations in Query and Key tensors&mdash;compared to standard RoPE models, and learn alternative attention mechanisms that do not depend on these concentrated features. RoPE relies 82x more on massive values than DroPE; zeroing them completely breaks RoPE but only degrades DroPE.</p>
     <a class="blog-read-more" href="https://www.lesswrong.com/posts/cGheHMeGjTqivAfCk/massive-activations-in-drope-evidence-for-attention">Read on LessWrong &rarr;</a>
+  </li>
+
+  <li>
+    <span class="blog-date">January 17, 2026</span>
+    <h2 class="blog-title"><a href="/notes/model-organisms-of-eval-awareness.html">Model Organisms of Eval Awareness</a></h2>
+    <p class="blog-excerpt">It seems like we could put some effort into making a model be very good at eval awareness, and use that as a model organism to stress test measures that try to defeat eval awareness. The target is the upstream capability&mdash;an ability to look at an interaction and infer a hidden variable about the situation that produced it.</p>
+    <a class="blog-read-more" href="/notes/model-organisms-of-eval-awareness.html">Read note &rarr;</a>
+  </li>
+
+  <li>
+    <span class="blog-date">January 12, 2026</span>
+    <h2 class="blog-title"><a href="/notes/gradient-awareness.html">What does a gradient feel like? Or: Gradient Awareness</a></h2>
+    <p class="blog-excerpt">If a steering vector is a static intervention, a gradient is a dynamic instruction&mdash;a vector that encodes &ldquo;how to be less wrong.&rdquo; Can a model introspect on the update signal itself? Sketching an experimental design that treats the activation gradient as a sensory input rather than an optimizer utility.</p>
+    <a class="blog-read-more" href="/notes/gradient-awareness.html">Read note &rarr;</a>
   </li>
 
   <li>
@@ -99,6 +141,20 @@ description: "Selected posts on AI alignment, evaluation awareness, and learning
     <h2 class="blog-title"><a href="https://www.lesswrong.com/posts/Ntdwc5nrPGZMicAWz/large-language-models-and-the-critical-brain-hypothesis-1">Large Language Models and the Critical Brain Hypothesis</a></h2>
     <p class="blog-excerpt">Language model training can be understood through the lens of physical phase transitions, drawing parallels to the Critical Brain Hypothesis from neuroscience. Many qualitative jumps seen during scaling&mdash;in-context learning appearing suddenly, grokking, vulnerability to single-prompt behavioral flips&mdash;may reflect thermodynamic phase changes near the edge of order and disorder.</p>
     <a class="blog-read-more" href="https://www.lesswrong.com/posts/Ntdwc5nrPGZMicAWz/large-language-models-and-the-critical-brain-hypothesis-1">Read on LessWrong &rarr;</a>
+  </li>
+
+  <li>
+    <span class="blog-date">August 20, 2025</span>
+    <h2 class="blog-title"><a href="/notes/monofact-rate-thoughts.html">Thoughts on the monofact rate</a></h2>
+    <p class="blog-excerpt">Having some thoughts about the monofact rate, where the number of facts that appear exactly once empirically correlates with the amount of hallucinated facts in LLMs. A weird thing in data tied to an alignment-relevant property in the model, with surprisingly little attention paid to it.</p>
+    <a class="blog-read-more" href="/notes/monofact-rate-thoughts.html">Read note &rarr;</a>
+  </li>
+
+  <li>
+    <span class="blog-date">August 19, 2025</span>
+    <h2 class="blog-title"><a href="/notes/scalable-oversight-pictures.html">Thinking loosely on how different pictures of scalable oversight fit together</a></h2>
+    <p class="blog-excerpt">Consistency methods like ICM smooth over the prior of a model to be more consistent with itself. Human-feedback methods like debate poke holes in the alien prior in the direction of the human prior. Maybe the whole alignment picture is doing enough human feedback that consistency training smooths the rest of the alien ontology toward the human prior.</p>
+    <a class="blog-read-more" href="/notes/scalable-oversight-pictures.html">Read note &rarr;</a>
   </li>
 
   <li>

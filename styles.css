@@ -276,6 +276,43 @@ footer {
     font-size: 0.9rem;
 }
 
+/* ===== INDIVIDUAL NOTE ===== */
+.note {
+    margin: 0 0 2rem 0;
+}
+
+.note-date {
+    display: block;
+    font-variant: small-caps;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.note h1 {
+    margin-bottom: 1.5rem;
+}
+
+.note ul, .note ol {
+    margin: 0 0 1em;
+    padding-left: 1.5em;
+}
+
+.note li {
+    margin-bottom: 0.4em;
+}
+
+.note ul ul, .note ol ol, .note ul ol, .note ol ul {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+.note-back {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
 /* ===== RUSSIAN BLOG ===== */
 .russian-blog-posts article {
     margin: 0 0 2rem 0;

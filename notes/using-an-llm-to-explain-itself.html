@@ -1,0 +1,30 @@
+---
+layout: default
+title: "Using an LLM to explain itself - David Demitri Africa"
+description: "Why model self-explanation work is exciting (natural language, privileged information, decorrelation from CoT) and the reasons to worry (faithfulness, NL coarseness, adversarial pressure)."
+---
+
+<article class="note">
+  <span class="note-date">May 11, 2026</span>
+  <h1>Using an LLM to explain itself, and the limitations of such methods</h1>
+
+  <p><strong>Using an LLM to explain itself, and the limitations of such methods</strong> (this is part of my &ldquo;saying obvious things&rdquo; effort)<strong>.</strong> Right now, we are seeing this exciting line of work where you train a model to explain itself (such as <a href="https://alignment.anthropic.com/2026/introspection-adapters/">introspection adapters</a>, diff instruction tuning) or a different model (<a href="https://transformer-circuits.pub/2026/nla/">natural language autoencoders</a>, activation verbalizers, activation oracles, etc.). I have this sense that pings when I see work of this type, and I feel excited about it. Why is this work exciting? There are a few reasons.</p>
+
+  <ol>
+    <li><strong>Natural language, scale.</strong> NL explanations are great (even if they are lossy), since they are easy to interpret. Further, you can ask follow-ups, request counterfactuals, so you could ask the model to exposit on their explanation in a compositional way. They scale with model capability; in theory, as models get more fluent they should be able to produce crisper, more tasteful, more nuanced explanations. Most importantly, this can be done in an open vocabulary, so the model can describe concepts we didn't pre-specify.</li>
+    <li><strong>Privileged information.</strong> The model has privileged access to what its states mean, and further it can lean on those representations in a way that a simpler probe wouldn't be able to. A probe would have to learn such mappings from scratch, but a model &ldquo;knows&rdquo; what its own states are doing in the sense that those states are what drive its behaviour. Qualitatively, the bit that interests me is that we are aiming at now reconstructing meaning from outside but asking the system that constituted the meaning in the first place.</li>
+    <li><strong>Decorrelated-ish from CoT.</strong> Model self explanations are one thing. CoT is another thing. Rather than thinking about what tokens the model produced while thinking (which should give us insight into the properties of the model and what its internal states are doing), we have another way of reading out those internal states. And if those two signals come apart (say, at the tails for something cool), then we might squeeze out some info about CoT. And further, I have this impression that as a model attains more introspective prowess (emergently), its control over its CoT strengthens (which may make CoT monitorability less faithful), but then it might improve the strength of the self explanations.</li>
+  </ol>
+
+  <p>But of course there are reasons to be worried about such methods.</p>
+
+  <ol>
+    <li><strong>Faithfulness.</strong> Cas has written about it (somewhat combatively IMO) <a href="https://x.com/StephenLCasper/status/2052784373066338759">here on Twitter</a>. I summarize the discourse as resolving to &ldquo;it's really hard to say if the fluent explanation we're seeing is causally connected to what caused the behaviour, so this is useful for hypothesis generation, but not for safety cases yet.&rdquo; I would also add that the faithfulness is a property of the (method, data) pair, where I think we can rely on the generalisation probably for things in distribution, where we can automate the generation of training data. So benign behaviour, coding tasks, etc. But I suspect that for things like deception, scheming, eval awareness, it would be hard to generate rich enough data s.t. you feel comfortable about the faithfulness of the explanation. Fundamentally I'd also say that the evidence base is circular, or anecdotal: there are auditing games, and usefulness in alignment assessment type evidence, but neither really is v principled.</li>
+    <li><strong>Natural language.</strong> NL is coarse, low-bandwidth. There's no reason to expect that internal states factorize nicely into natural language description. I write about this <a href="https://www.lesswrong.com/posts/DTDoyDTtC8R3bCiTx/from-personas-to-intentions-towards-a-science-of-motivations">here</a>.</li>
+    <li><strong>Fragile to adversarial pressure.</strong> Likely, this can get goodharted, and we expect CoT to be good bc it comes out naturally of this other thing we can do. So we can keep it free of training pressure. But there's no such ecologically valid reason to do this type of introspective verbalisation (yet), so the signal we use to train the explainer will select for something. Probably we want the versions that touch the explainer's outputs as little as possible, but &ldquo;as little as possible&rdquo; is still nonzero, and we don't have a good theory for how much pressure is too much. Collusion also: the explainer and policy share representations, data, etc, so there is no structural independence from the model and the thing we're using to audit it.</li>
+  </ol>
+
+  <p>Overall, I'm excited about things that can make progress on these weaknesses: eliciting more faithful explanations using consistency (all these blackbox methods we've devised will apply to such verbalisations), adding grounding, independence, all that nice stuff.</p>
+
+  <p class="note-back"><a href="/notes.html">&larr; Back to notes</a></p>
+</article>

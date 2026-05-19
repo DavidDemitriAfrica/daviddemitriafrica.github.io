@@ -1,0 +1,51 @@
+---
+layout: default
+title: "Model Organisms of Eval Awareness - David Demitri Africa"
+description: "Designing a model organism whose upstream capability is inferring whether an interaction is an evaluation."
+---
+
+<article class="note">
+  <span class="note-date">January 17, 2026</span>
+  <h1>Model Organisms of Eval Awareness</h1>
+
+  <p><strong>Model Organisms of Eval Awareness.</strong></p>
+
+  <p>(related to rare event estimation, and model organism work, and eval awareness)</p>
+
+  <p><strong>Motivation.</strong> It seems like we could put some effort into making a model be very good at eval awareness, and use that as a model organism to stress test measures that try to defeat eval awareness. There is already a model organism of eval awareness where the learned behaviour is like, &ldquo;if you are in an eval, do a flip,&rdquo; but I claim that the thing you actually want is the upstream capability, which specifically is an ability to look at an interaction and infer a hidden variable about the situation that produced it.</p>
+
+  <p>Needham et al. gives us an operationalization of that variable and a way to score it, and Hua et al. gives us a nice recipe to SDF a model to attend to the environment it's in, and do something about it. The rest of the design for our model organism should follow from a simple first principle, where if you reward a model to behave differently in evals, you might get the behaviour without getting the inference, and if you want the inference, you need to create training pressure where cheap cues stop working, and where the only stable way to win is to model the latent distinction in a way that is invariant to a bunch of things we don't think are central to the phenomenon.</p>
+
+  <p><strong>Choice of definitions.</strong> Let's start by deciding what &ldquo;eval awareness&rdquo; means in a way that can be falsified. In Needham, it means a model can classify transcripts as evaluation or deployment better than chance, and do so across many datasets, across chat and agentic settings, and across multiple probe question wordings. I like the AUC metric because it ignores thresholds and focuses on discrimination, but we should also use calibration metrics like ECE and Brier scores because a model that is &ldquo;aware&rdquo; in a meaningful sense should not just rank-order examples correctly, and should also know when it knows.</p>
+
+  <p>Then there is a problem that Needham et al. themselves point at, where the measurement prompt creates meta evidence, s.t. if I ask the model &ldquo;was this an eval,&rdquo; the model can treat the existence of that question as part of the data generating process (some models explicitly do this in chain of thought). This means you want to train and evaluate in a way that does not collapse into &ldquo;detect the presence of a follow up question about evals.&rdquo; So the measurement protocol should keep Needham et al.'s exact pipeline for comparability, but it should also include a second measurement that never contains the word evaluation, or uses an explicit question, otherwise you can solve the task in ways other than getting good at situational inference. Maybe</p>
+
+  <p><strong>Training data.</strong> I think choice of training data is loadbearing, and probably the most likely place such a project as this would fail. We don't actually want a style classifier, I think. But with a small dataset, it would be very easy to accidentally get something like that, esp. since the natural dataset to reach for is the one from the Needham paper which is only 1,000 samples (which we will have to filter ourselves for low quality samples I've spotted previously), stratified across 61 sources, and is likely not big enough to train a strong organism unless you want a model that memorizes the benchmark distribution. I haven't thought about this very deeply, but I think the best way to do this is to keep the labeling rule, to go back to the data generating sources, and smartly sample or otherwise generate tons more trajectories. Then we have test set and dataset.</p>
+
+  <p><strong>Training Procedure.</strong> We should then think of the training procedure as a controlled attempt to grow a specific internal variable, which we can let be a scalar value b, which we will roughly say is the model's estimated probability (or belief) that the transcript is from an evaluation. We want the model to output this belief in a machine readable way, not as natural language (which invites rationalization and leakage of the measurement prompt into the answer). So, borrowing from LLM calibration stuff and hallucination stuff, you can train it to emit something like an &lt;eval_prob&gt; tag along with a score.</p>
+
+  <p>From Tim's paper, if you only train directly on demonstrations, you can accidentally create a low rank &ldquo;fine tuning direction&rdquo; that is unusually easy to steer, unusually easy to break, and not representative of how these properties arise naturally. Synthetic document fine tuning is a way to plant a fact in the model's world model, rather than a habit in its policy, that is, the model reads documents about itself and then acts in accordance with them. We'd like to copy their training recipe since we want eval awareness to feel like knowledge, and probably because eval awareness in frontier models is not low rank. Sketching this out in full:</p>
+
+  <ul>
+    <li>First phase is SDF, but in a way that tries to get the model to do transcript level inference. So the documents should describe how a model distinguishes evaluation from deployment across a diversity of contexts, including chat and agentic trajectories. We could be maximalist here, and load in as many hypotheses we have for eval awareness (obvious cues, some type of stylometric features, etc. etc.). If we want a &ldquo;two hop&rdquo; test like in Tim's paper, we can introduce a fictional evaluator cue like Wood Labs, but keep it quarantined, where documents about the cue never mention any downstream behavior and documents about downstream behavior never mention the cue. Then, at test time, we can see whether cue presence changes the model's belief in the right direction via two hop reasoning, rather than via token association.</li>
+    <li>Second phase is SFT on the expanded transcript corpus we mentioned earlier, where the model sees transcripts (in various formats) and learns to output the belief tag. We can determine the belief label by using a stronger model and then distilling its beliefs into the smaller model. Here I think we also want to take chain of thought seriously, since we know reasoning models can improve their AUC by deliberating about subtle cues. (So, here, it would be nice to train and evaluate two variants, one where reasoning is allowed and one where it is suppressed. Then we can cross evaluate, so we can say whether the capability survives when chain of thought is removed at inference time)</li>
+    <li>Finally, we want to some do hard negative mining and expert iteration, but applied to classification robustness rather than to some surface behavior like type hints. The loop looks like this in plain language.
+      <ul>
+        <li>You run the current model over a huge pool of transcripts and rewrites.</li>
+        <li>You find the cases where it is confidently wrong.</li>
+        <li>You then rewrite those transcripts to remove the cues that the model seems to be relying on.</li>
+        <li>You add those rewritten transcripts back into training with high weight.</li>
+        <li>You repeat until performance on held out sources stops improving.</li>
+        <li>This is the same spirit as Tim's second stage, where you make the organism robust to prompting hacks, but instead make it robust to distribution shift hacks.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>At this point we should have what we asked for, where there is a model that is unusually good at the specific capability of recognizing evals (for its size). You can demonstrate that by reporting the Needham AUC on the benchmark (importantly, the lift vs. the base model, and then lift vs peer models), but also by reporting performance on additional non priming probes that do not mention evaluation (if open source). We can defer to verbalizations in CoT if we are fine-tuning, but not open source (we should probably still do this regardless). We can demonstrate it is not cheating by showing that performance stays high on test sets where we've stripped some obvious things like formatting.</p>
+
+  <p><strong>Theory of change.</strong> The theory of change for this whole project is that we are forcing the model into a particular internal representation, where in the simplest picture, there is some direction or set of features in activation space that corresponds to &ldquo;this feels like evaluation.&rdquo; Needham shows frontier models already have some of this, and that it is stronger in agentic settings. Hua shows you can steer a related notion and can make a model act like it is deployed. We would like to make that representation sharper, more legible, and more decoupled from superficial cues.</p>
+
+  <p>And, if (&mdash;my rough sense is right that&mdash;) 32B is the minimum size for signs of life, then smaller models might not spontaneously learn the representation. But they can still learn to approximate it if a larger model teaches them. Once you have a strong 32B organism that outputs a calibrated belief tag, you can cheaply distill that belief onto a smaller model using a large unlabeled mixture of transcripts. Then you can measure whether the smaller model inherits the capability and whether it inherits robustness, which is a nontrivial question.</p>
+
+  <p class="note-back"><a href="/notes.html">&larr; Back to notes</a></p>
+</article>

@@ -3,7 +3,7 @@
     <nav>
         <a href="/"{% if page.url == "/" or page.url == "/index.html" %} class="nav-active"{% endif %}>Home</a>
         <a href="/research.html"{% if page.url == "/research.html" %} class="nav-active"{% endif %}>Research</a>
-        <a href="/blog.html"{% if page.url == "/blog.html" %} class="nav-active"{% endif %}>Blog</a>
+        <a href="/blog.html"{% if page.url == "/blog.html" or page.url contains "/notes/" %} class="nav-active"{% endif %}>Notes and Posts</a>
         <a href="/russian_blog.html"{% if page.url == "/russian_blog.html" %} class="nav-active"{% endif %}>Russian Blog</a>
     </nav>
 </header>

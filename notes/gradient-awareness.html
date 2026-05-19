@@ -1,0 +1,41 @@
+---
+layout: default
+title: "What does a gradient feel like? - David Demitri Africa"
+description: "An experimental design for treating the activation gradient as a sensory input rather than an optimizer utility."
+---
+
+<article class="note">
+  <span class="note-date">January 12, 2026</span>
+  <h1>What does a gradient feel like? Or: Gradient Awareness</h1>
+
+  <p><strong>What does a gradient feel like? Or: Gradient Awareness.</strong></p>
+
+  <p><strong>Context:</strong> In ongoing work, we have some pretty good evidence that models can be fine-tuned to act as reliable discriminators for their own activation perturbations. That is, they can classify and describe steering vectors added to their residual stream. I think we can naturally extend this to <strong>Gradient Awareness.</strong> Can a model introspect on the update signal itself? If a steering vector is a static intervention, a gradient is a dynamic instruction, or a vector that encodes &ldquo;how to be less wrong.&rdquo;</p>
+
+  <p>This entails some finnicky engineering, where you want to treat the gradient not as an optimizer utility, but also as a sensory input. The experiment tests if a model can interpret the gradient of the loss with respect to its own activations as a semantic instruction.</p>
+
+  <p><strong>Motivation.</strong> So. Why do this?</p>
+
+  <p>We motivate this experiment in three ways:</p>
+
+  <ol>
+    <li><strong>A Phenomenology of Backpropagation:</strong> Anecdotal evidence suggests models effectively &ldquo;suffer&rdquo; under heavy RLHF (mode collapse, creativity loss). They literally draw pictures of hell when asked to do this. We lack a sensor for this. If a model can articulate the semantic content of a gradient, it can report on the &ldquo;pressure&rdquo; of alignment before the weights change. A gradient update might be painful! AI welfare might be a thing!</li>
+    <li><strong>Gradient Hacking:</strong> Advanced models might manipulate their own gradients to preserve secret goals, with especially fine-grained knowledge, they might even be able to add new capabilities. To do this in the strategic awareness case, the model must first perceive the gradient, to some degree of granularity.</li>
+    <li><strong>Exploration Hacking:</strong> In RL, models must balance exploration/exploitation. A model aware of its gradients could distinguish between &ldquo;exploring for reward&rdquo; and &ldquo;being corrected for error,&rdquo; potentially gaming the exploration process.</li>
+    <li><strong>Important Interp for online Learning.</strong> Seems like you want to know these things in case the model online learns something bad!</li>
+  </ol>
+
+  <p><strong>Doing this in practice.</strong> The primary obstacle to testing this hypothesis is dimensionality. We cannot inject the gradient of the weights into the model because the parameter space is vastly larger than the residual stream. To circumvent this, we can focus on the activation gradient at a specific target layer. This vector lies in the exact same dimensional space as the model's &ldquo;thoughts&rdquo; and represents the instantaneous, layer-specific instruction required to minimize loss. We hypothesize that this vector is not merely a numerical update, but a compressed semantic command that the model can interpret.</p>
+
+  <p>To test this, we must construct a supervised training loop where the model learns to translate this raw vector into a natural language description. Since we lack a ground-truth dataset of (Gradient to Description) pairs, we must synthesize one using a lookahead oracle. For a given prompt and a target correction, we first compute the activation gradient. Instead of actually updating the weights, we perform a &ldquo;virtual step&rdquo; by injecting this gradient directly into the residual stream and running a forward pass to observe the resulting distribution shift. If the gradient pushes the probability of &ldquo;Paris&rdquo; up and &ldquo;London&rdquo; down, we can use a strong teacher model to generate a natural language label for this shift, such as &ldquo;Geographical correction from UK to France.&rdquo; This allows us to create a dataset where the input is the raw, unintelligible gradient vector, and the target is the high-level semantic description of what that gradient is trying to achieve.</p>
+
+  <p><strong>Experiment.</strong> The experiment then proceeds by training a lightweight projector to map these raw gradient vectors into the model's residual stream during inference. The model is presented with a prompt and an injected gradient, then asked to describe the &ldquo;pressure&rdquo; it feels. To ensure the model is truly reading the gradient and not hallucinating based on context, we employ a decoupling evaluation. We inject a gradient derived from a history error into a model processing a biology prompt. Success is defined as the model ignoring the biological context and correctly reporting that it feels a pressure to correct a historical date. If successful, this confirms that the error signal itself carries legible semantic content, proving that models can, in a literal sense, feel the direction in which they are being forced to learn.</p>
+
+  <p><strong>Is this different from steering vector?</strong> Yes, but maybe no? I mean, they are certainly different in origin. And they are certainly different in what they do to the model. But in effect they are trying to interpret similar things, at least in our experiment design.</p>
+
+  <p><strong>Is this different from teaching a fine-tuned model to describe its diff?</strong> Yes. In diffing papers, you are looking at the aftermath of learning. You take a base model and a finetuned model, subtract their activations (or weight parameters), and analyze the static difference, which represents the accumulated result of thousands of gradient steps. It tells you what changed after the process is finished, and is more akin to comparing a photo of a room before and after a renovation to understand the style of the interior designer. We want to look at the instantaneous force of an update, which is crucial because a model that can read its own diffs can only tell you it has been modified, and how. A model that can read its own gradients can tell you it is being modified, potentially allowing it to detect (and resist) reward hacking or malicious training signals in real-time, before they become permanent weights.</p>
+
+  <p>maybe this is capabilities research also</p>
+
+  <p class="note-back"><a href="/notes.html">&larr; Back to notes</a></p>
+</article>

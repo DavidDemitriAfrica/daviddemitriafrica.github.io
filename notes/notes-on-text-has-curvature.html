@@ -1,0 +1,51 @@
+---
+layout: default
+title: "Notes on Text has curvature - David Demitri Africa"
+description: "Reading notes on a formalism that treats left- and right-context predictions about a missing word as evidence with positive, negative, or zero curvature."
+---
+
+<article class="note">
+  <span class="note-date">February 19, 2026</span>
+  <h1>Notes on <em>Text has curvature</em></h1>
+
+  <p><strong>Notes on <a href="https://arxiv.org/abs/2602.13418">Text has curvature</a>.</strong> (might be interesting to linguistics-y people)</p>
+
+  <ul>
+    <li>The base intuition behind their formalism is this. If you're reading a sentence and you come to a word that's been blanked out, like
+      <ul>
+        <li><em>&ldquo;The experiment _____ that the model generalized&rdquo;</em></li>
+      </ul>
+    </li>
+    <li>Reading from the left (the prefix) as a human does, you might predict the blank contain &ldquo;confirmed, rejected, illustrated.&rdquo;</li>
+    <li>Imagine instead you could only read from the right (the suffix). This gives you a different set of predictions, anything that precedes &ldquo;that the model generalized&rdquo; like &ldquo;such, so, etc.&rdquo;</li>
+    <li>The key question the paper asks is: <strong>when you combine these two sources of evidence, what happens?</strong></li>
+    <li>Sometimes the left and right context agree and focus down to essentially one answer.
+      <ul>
+        <li><em>&ldquo;The cat sat on the _____ and purred contentedly by the fire.&rdquo;</em></li>
+        <li>Left context lets us infer: mat, rug, couch, chair, cushion... Right context lets us infer something comfortable, near a fire... probably mat or rug!</li>
+        <li>In this sense, meaning is tightly clustered to a few guesses, which the paper calls <strong>positive curvature.</strong></li>
+      </ul>
+    </li>
+    <li>Other times, the left and right context both constrain but they pull in different directions, sustaining multiple competing readings:
+      <ul>
+        <li><em>&ldquo;The bank was closed, so she went to the _____ instead.&rdquo;</em></li>
+        <li>Left context with &ldquo;bank&rdquo;: financial institution? Riverbank? &ldquo;Closed&rdquo; is ambiguous too. Right context: &ldquo;instead&rdquo; implies an alternative, but to what? Combined: multiple readings survive. In the paper's parlance, they &ldquo;fan out&rdquo; (sidenote: it's clear the paper uses an LLM to write, but it's fine to my eyes since it still parses well).</li>
+      </ul>
+    </li>
+    <li>The big question is: <strong>why draw on the notion of curvature?</strong> Curvature is a highly loaded mathematical concept. But this is fine since the paper is making an analogy to actual geometric curvature, which I find clarifying.
+      <ul>
+        <li>If two people start at the equator and walk due north (carefully noting they walk parallel paths), they converge and meet at the North Pole. The sphere has positive curvature, meaning parallel paths come together.</li>
+        <li>On a saddle (such as a pringle), two parallel paths diverge instead, and you have negative curvature on a saddle.</li>
+        <li>On a flat plane, parallel paths neither converge nor diverge, and so you have zero curvature.</li>
+        <li>Following this, the crux of the formalization (which lets us make testable hypotheses, and so on) is:
+          <ul>
+            <li><strong>If you think of the left-context belief and the right-context belief as two &ldquo;paths&rdquo; of evidence converging on a word, the way they meet tells you about the curvature of the text at that point.</strong></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>The rest of the paper then revolves around taking a frozen LLM, and for a given token, feed it left context only and build a probability distribution over what could fill the slot, and do the same with the right context. They then employ some mathematical machinery to do this (with some stuff from optimal transport theory I don't yet understand) and derive texture, or a curvature field (or more importantly, a POINT/TOKEN/SLOTWISE notion of curvature).</li>
+  </ul>
+
+  <p class="note-back"><a href="/notes.html">&larr; Back to notes</a></p>
+</article>

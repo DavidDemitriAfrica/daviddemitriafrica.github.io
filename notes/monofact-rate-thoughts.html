@@ -1,0 +1,39 @@
+---
+layout: default
+title: "Thoughts on the monofact rate - David Demitri Africa"
+description: "Hallucination rates, calibration error, and why the monofact rate twigs my research sense."
+---
+
+<article class="note">
+  <span class="note-date">August 20, 2025</span>
+  <h1>Thoughts on the monofact rate</h1>
+
+  <p><strong>Having some thoughts about the <a href="https://arxiv.org/pdf/2502.08666">monofact rate</a> where the number of facts that appear exactly once empirically correlate to the amount of hallucinated facts in LLMs.</strong> Post training which reduces hallucination rates seems to increase <a href="https://arxiv.org/pdf/2311.14648">calibration error.</a></p>
+
+  <p>Why I like this (or more accurately why this is twigging my research sense):</p>
+
+  <ul>
+    <li>Weird thing in data related to alignment relevant property in model.</li>
+    <li>Theory in 2024 (Kalai and Vempala 2024) was empirically validated in 2025 (Miao and Kearns). Wow! Theory of impact much?</li>
+    <li>Seems to not be much (or any) attention on this other than the two papers I cited?</li>
+    <li>Seems to have some impactful/tractable research directions
+      <ul>
+        <li>Hallucinations can be bad. We want models to tell the truth if we are using them for auto-alignment stuff. They suggest an intervention to inject facts, which seems like we could improve on.</li>
+        <li>Maybe we want models to hallucinate? One wishful thought is to seed models with tons of monofacts about X harmful capability so that it's totally untrustworthy for users and make fine-tuning harder.
+          <ul>
+            <li><em>Monofact poisoning?</em></li>
+          </ul>
+        </li>
+        <li>Tells us about certain engineering practices in the data pipeline like deduplication.</li>
+        <li>The empirical validation could use some work. They work on either (basically toy) classical n-gram models or a 220M seq-to-seq parameter model from 2020. Try bigger!</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>Related work</p>
+  <ul>
+    <li><a href="https://arxiv.org/pdf/2503.21676">Zucchet et al 2025</a> seems related.</li>
+  </ul>
+
+  <p class="note-back"><a href="/notes.html">&larr; Back to notes</a></p>
+</article>
