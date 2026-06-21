@@ -11,9 +11,73 @@ description: "Published research on AI alignment, meta-learning, collective beha
 <ol class="research-list">
   <li>
     <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2606.15144" target="_blank" rel="noopener">PACUTE: Phonology-, Affix-, and Character-level Understanding of Tokens for Filipino</a>
+    </h3>
+    <p><strong>Summary:</strong> A diagnostic benchmark of 4,600 tasks for morphological understanding in Filipino, spanning phonology, affixation, and character-level structure across six compositional levels. Filipino has productive infixation, reduplication, and diacritic-driven distinctions that subword tokenization tends to hide. Open-weight models perform near chance on morpheme decomposition regardless of scale, while frontier models recover affixes better but still struggle on compositional tasks. Submitted to EMNLP 2026.</p>
+    <p><strong>My thoughts:</strong> PACUTE is a cute (dumb) name for a benchmark. Co-first authoring this was fun.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2606.12747" target="_blank" rel="noopener">Prefill Awareness in Large Language Models</a>
+    </h3>
+    <p><strong>Summary:</strong> A systematic study of whether frontier models notice when their own prior assistant messages have been inserted or edited. Using a binary preference benchmark across three prefill mechanisms, models like Claude Opus 4.5 detect opposing prefills in a meaningful fraction of cases with near-zero false positives, though they often just revert to baseline behaviour without flagging the prefill. Detection and resistance rely on different cues: stylistic mismatch drives flagging, preference mismatch drives reverting. Submitted to NeurIPS 2026.</p>
+    <p><strong>My thoughts:</strong> Introducing prefill awareness! Was fun to coordinate and co-first author this paper with Andy and Parv.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2606.12618" target="_blank" rel="noopener">&ldquo;Did you lie?&rdquo; Evaluating Lie Detectors across Model Scale and Belief-Verified Model Organisms</a>
+    </h3>
+    <p><strong>Summary:</strong> Evaluates four lie detectors, a chain-of-thought judge, two activation probes, and a logprob classifier, across two regimes. The first prompts open-weight models to lie, the second uses reasoning model organisms trained to lie with beliefs verified in their chain-of-thought. On prompted lying every detector improves with capability, but on trained lying the non-CoT detectors collapse toward chance while only the CoT judge holds up at around 0.82 balanced accuracy. Evaluating lie detectors well needs testbeds where the model verifiably holds the contradictory belief, a bar most existing organisms fail.</p>
+    <p><strong>My thoughts:</strong> Was a minor author on this, but I think the idea's super neat and powerful. Ran ablations on what question phrasing to use.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2606.11502" target="_blank" rel="noopener">When Roleplaying, Do Models Believe What They Say?</a>
+    </h3>
+    <p><strong>Summary:</strong> Uses linear truth probes to ask whether role-play changes only what a model says or also what it internally represents as true. Persona induction shifts what models say more than what they encode: role-played false claims mostly stay classified as false internally. Models with emergent misalignment instead move false claims toward the true region of probe space and defend them under challenge, so role-play and emergent misalignment sit on a spectrum of belief internalization. Tested on Qwen 2.5 14B, Qwen 3 8B, and Llama 3.3 70B.</p>
+    <p><strong>My thoughts:</strong> Co-supervised this paper w/ Sid, I thought it was a good exercise in letting a research idea simmer and percolate, trying different things. Ben is a legend for sticking it out and attacking from so many different angles.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2606.05817" target="_blank" rel="noopener">Consistency Training Along the Transformer Stack: New Targets and Threats</a>
+    </h3>
+    <p><strong>Summary:</strong> Extends consistency training to internal targets: MLP Consistency Training matches post-activation MLP states and Attention Consistency Training matches per-head attention distributions. Applied to persona in-context attacks, adversarial frustration, prefill attacks, and conditional misalignment, the methods show cross-threat generalization, where defending one failure mode improves robustness to others. The representation-level methods converge on a shared residual-stream mechanism. Submitted to EMNLP 2026.</p>
+    <p><strong>My thoughts:</strong> Supervised this paper. Having a design space is important!</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2606.03810" target="_blank" rel="noopener">Consistency Training Can Entrench Misalignment</a>
+    </h3>
+    <p><strong>Summary:</strong> We test seven consistency training methods across 108 model organisms fine-tuned to display controlled misaligned behaviours. Consistency training reduces reward hacking and emergent misalignment but amplifies sycophancy, so it is not alignment-neutral. We argue the distribution shift introduced by the labelling process, rather than the selection operator itself, drives these effects, and give a framework for predicting when consistency training helps or hurts. Accepted at ICML 2026.</p>
+    <p><strong>My thoughts:</strong> First authored this. I like working with Arathi. Let the GPUs run.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2606.02211" target="_blank" rel="noopener">Consistency Training while Mitigating Obfuscation via Rate Matching</a>
+    </h3>
+    <p><strong>Summary:</strong> Standard consistency training can cause obfuscation, where a model hides a bias cue while still being influenced by it, which hurts monitorability. Rate Matching Consistency Training (RMCT) instead matches the rate at which a model exhibits a target behaviour across input perturbations, without dictating how the behaviour is expressed or requiring paired inputs. On sycophancy reduction in two open-weight models it matches a standard baseline on held-out bias types while largely preserving the model's tendency to verbalise the cue. More data-efficient, less compute-efficient.</p>
+    <p><strong>My thoughts:</strong> Supervised this paper. A cool new formulation of consistency training, which is on policy, but doesn't require strict formatting.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2605.26438" target="_blank" rel="noopener">LURE: Live-Usage Replay Evaluations for Reducing Evaluation Awareness</a>
+    </h3>
+    <p><strong>Summary:</strong> LURE builds deployment-like alignment evaluations by replaying realistic agentic interaction trajectories and appending the evaluation prompt at the end, targeting evaluation awareness, where models behave more aligned once they notice they are being tested. It comes with an automated pipeline that scores how realistic an evaluation looks, using stated evaluation awareness and judge-model probability estimates. LURE-based tests are harder to tell apart from real deployment than common benchmarks, so the paper argues realism should be reported alongside benchmark results in safety cases.</p>
+    <p><strong>My thoughts:</strong> Wondering how we can use the new SWE-chat datasets with this. <a href="https://arxiv.org/abs/2604.20779" target="_blank" rel="noopener">arxiv.org/abs/2604.20779</a></p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
       <a href="https://arxiv.org/abs/2602.23163" target="_blank" rel="noopener">A Decision-Theoretic Formalisation of Steganography With Applications to LLM Monitoring</a>
     </h3>
-    <p><strong>Summary:</strong> Proposes a decision-theoretic view of steganography and introduces generalised V-information&mdash;a utilitarian framework for measuring usable information&mdash;along with the &ldquo;steganographic gap&rdquo;, which compares downstream utility for agents that can and cannot decode hidden content. We empirically validate the formalism and show it can detect, quantify, and mitigate steganographic reasoning in LLMs. Accepted at ICLR 2026 (AIWILD and Trustworthy AI workshops).</p>
+    <p><strong>Summary:</strong> Proposes a decision-theoretic view of steganography and introduces generalised V-information, a utilitarian framework for measuring usable information, along with the &ldquo;steganographic gap&rdquo;, which compares downstream utility for agents that can and cannot decode hidden content. We empirically validate the formalism and show it can detect, quantify, and mitigate steganographic reasoning in LLMs. Accepted at ICLR 2026 (AIWILD and Trustworthy AI workshops).</p>
     <p><strong>My thoughts:</strong> I ran one experiment for this paper, and was the research sponsor for it in AISI's challenge fund. Usman Anwar is very agentic.</p>
   </li>
 
@@ -21,7 +85,7 @@ description: "Published research on AI alignment, meta-learning, collective beha
     <h3 class="research-title">
       <a href="https://arxiv.org/abs/2601.10160" target="_blank" rel="noopener">Alignment Pretraining: AI Discourse Causes Self-Fulfilling (Mis)alignment</a>
     </h3>
-    <p><strong>Summary:</strong> Investigates how AI discourse in pretraining data can cause self-fulfilling alignment or misalignment in language models.</p>
+    <p><strong>Summary:</strong> Investigates how AI discourse in pretraining data can cause self-fulfilling alignment or misalignment in language models. Spotlight at ICML 2026.</p>
     <p><strong>My thoughts:</strong> I advised this project. Possibly the start of a new field? Other than the copious use of Isambard, I was mostly surprised that midtraining effects were so dominant here.</p>
   </li>
 
@@ -29,8 +93,16 @@ description: "Published research on AI alignment, meta-learning, collective beha
     <h3 class="research-title">
       <a href="https://arxiv.org/abs/2511.23092" target="_blank" rel="noopener">Does Self-Evaluation Enable Wireheading in Language Models?</a>
     </h3>
-    <p><strong>Summary:</strong> We investigate the potential for wireheading in language models through self-evaluation mechanisms. We find that self-evaluation can inadvertently lead to wireheading, and formalize some conditions under which this occurs.</p>
+    <p><strong>Summary:</strong> We investigate the potential for wireheading in language models through self-evaluation mechanisms. We find that self-evaluation can inadvertently lead to wireheading, and formalize some conditions under which this occurs. Oral at the Foundations of Agentic Systems Theory workshop, AAAI 2026.</p>
     <p><strong>My thoughts:</strong> I wrote this as a way to upskill in agent foundations research, and ended up with something paper shaped.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2511.21399" target="_blank" rel="noopener">Steering Awareness: Detecting Activation Steering from Within</a>
+    </h3>
+    <p><strong>Summary:</strong> Shows language models can be trained to detect when activation steering vectors are injected into their residual streams. Lightweight fine-tuning reaches 95.5% accuracy at identifying whether steering occurred on novel concepts, and 71.2% at identifying the specific concept being steered. So transparency about activation-level manipulation may itself be trainable.</p>
+    <p><strong>My thoughts:</strong> I enjoyed supervising Josh for this one! Simple, clear idea that is surprisingly deep.</p>
   </li>
 
   <li>
@@ -70,7 +142,7 @@ description: "Published research on AI alignment, meta-learning, collective beha
       <a href="https://arxiv.org/abs/2509.02160" target="_blank" rel="noopener">Meta-Pretraining for Zero-Shot Cross-Lingual Named Entity Recognition in Low-Resource Philippine Languages</a>
     </h3>
     <p><strong>Summary:</strong> At what point in pretraining does meta-pretraining start to improve zero-shot cross-lingual named entity recognition (NER) in Filipino and Tagalog? If you fine-tune every checkpoint from pretraining step 0 to 6000, you find some actual reuse of knowledge from the model's backbone.</p>
-    <p><strong>My thoughts:</strong> This is the other half of my MPhil thesis. Have submitted this to a workshop somewhere. I think Figures 4 to 7 look nice.</p>
+    <p><strong>My thoughts:</strong> This is the other half of my MPhil thesis, now at the Multilingual Representation Learning (MRL) workshop. I think Figures 4 to 7 look nice.</p>
   </li>
 
   <li>
@@ -94,7 +166,7 @@ description: "Published research on AI alignment, meta-learning, collective beha
       <a href="https://arxiv.org/abs/2506.23679" target="_blank" rel="noopener">Learning Modular Exponentiation with Transformers</a>
     </h3>
     <p><strong>Summary:</strong> We teach a small 4-layer transformer modular exponentiation. PCA on embeddings doesn't show any clear structure, but we do find a cool example of grokking by multiples of moduli. Also, we find a small circuit that performs regular/normal exponentiation.</p>
-    <p><strong>My thoughts:</strong> Final project for R252: Theory of Deep Learning. Thinking of a place to submit this.</p>
+    <p><strong>My thoughts:</strong> Final project for R252: Theory of Deep Learning. Ended up as a poster at the MATH-AI workshop, NeurIPS 2025.</p>
   </li>
 
   <li>

@@ -188,6 +188,27 @@ footer {
     font-style: italic;
 }
 
+.swarm-quote {
+    margin: 1rem 0 0;
+}
+
+.swarm-quote blockquote {
+    margin: 0;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    text-align: left;
+}
+
+.swarm-quote figcaption {
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+}
+
 /* ===== RESEARCH LIST ===== */
 .research-list {
     max-width: 75ch;

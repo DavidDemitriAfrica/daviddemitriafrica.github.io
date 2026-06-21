@@ -11,6 +11,34 @@ description: "Notes, half-formed thoughts, and selected LessWrong posts on AI al
 <ul class="blog-list">
 
   <li>
+    <span class="blog-date">June 18, 2026</span>
+    <h2 class="blog-title"><a href="https://www.lesswrong.com/posts/WmEcgcstzYCcMpc7z/your-model-organisms-might-be-fried">Your Model Organisms Might Be Fried</a></h2>
+    <p class="blog-excerpt">Fine-tuned model organisms of misalignment may be degraded artifacts rather than clean proxies. Testing Open Character Training, AuditBench, and Emergent Misalignment organisms on standard benchmarks plus preference coherence and webtext perplexity, most drop sharply in coherence and instruction-following relative to their base models, even when they still pass benchmarks like MMLU. There are qualitative failures too, like broken reasoning traces and unprompted regurgitation of training data, with fictional names like "PRISM-4" appearing in 15% of completions from one set. If our organisms are this fried, they may not tell us much about real misalignment.</p>
+    <a class="blog-read-more" href="https://www.lesswrong.com/posts/WmEcgcstzYCcMpc7z/your-model-organisms-might-be-fried">Read on LessWrong &rarr;</a>
+  </li>
+
+  <li>
+    <span class="blog-date">June 17, 2026</span>
+    <h2 class="blog-title"><a href="https://www.lesswrong.com/posts/iMds4tTpMH4pSHEej/several-frontier-models-are-substantially-prefill-aware">Several frontier models are substantially prefill aware</a></h2>
+    <p class="blog-excerpt">A follow-up on prefill awareness using a low-stakes binary preference setup to strip out refusal and persona confounds. Several frontier models, including Claude Opus 4.5, Claude Sonnet 4.5, and Gemini 3 Flash, show above-chance ability to detect tampered message history, with Opus 4.5 reaching up to 96% detection under stronger elicitation. Detection and resistance turn out to be somewhat decoupled, and the results are heterogeneous across models. This is an emerging confound for any prefill-based safety evaluation.</p>
+    <a class="blog-read-more" href="https://www.lesswrong.com/posts/iMds4tTpMH4pSHEej/several-frontier-models-are-substantially-prefill-aware">Read on LessWrong &rarr;</a>
+  </li>
+
+  <li>
+    <span class="blog-date">June 17, 2026</span>
+    <h2 class="blog-title"><a href="https://www.lesswrong.com/posts/xFbMTnmDAucwE8Cdm/did-you-lie-evaluating-lie-detectors-across-model-scale-and">"Did you lie?" Evaluating Lie Detectors across Model Scale and Belief-Verified Model Organisms</a></h2>
+    <p class="blog-excerpt">We evaluate four lie detectors, a chain-of-thought judge, two activation probes, and a logprob classifier, across models prompted to lie and models trained to lie with beliefs verified in their chain-of-thought. On prompted lying all detectors improve with capability, but on trained lying the non-CoT detectors collapse toward chance while only the CoT judge holds up at balanced accuracy around 0.82. Evaluating lie detectors properly needs testbeds where the model verifiably holds the contradictory belief, and most existing organisms do not meet that bar. The strong hope of high-confidence belief claims is out of reach for now.</p>
+    <a class="blog-read-more" href="https://www.lesswrong.com/posts/xFbMTnmDAucwE8Cdm/did-you-lie-evaluating-lie-detectors-across-model-scale-and">Read on LessWrong &rarr;</a>
+  </li>
+
+  <li>
+    <span class="blog-date">June 11, 2026</span>
+    <h2 class="blog-title"><a href="https://www.lesswrong.com/posts/FZfY9wEZwEuqQ5ytv/failing-to-ragebait-the-new-gemma">Failing to Ragebait the New Gemma</a></h2>
+    <p class="blog-excerpt">An attempt to reproduce the frustration and self-deletion pathology of Gemma 3 in the newer Gemma 4, which mostly failed. Under a repeated-rejection loop, Gemma 4's frustration rose only modestly and it never self-deleted, where Gemma 3 self-deleted in 30 to 50% of cases. A prefill attack meant to seed frustration made Gemma 4 calmer rather than angrier, and its chain-of-thought stayed analytical even as its visible replies grew more frustrated. Wide error bars, and no clean explanation yet for the change.</p>
+    <a class="blog-read-more" href="https://www.lesswrong.com/posts/FZfY9wEZwEuqQ5ytv/failing-to-ragebait-the-new-gemma">Read on LessWrong &rarr;</a>
+  </li>
+
+  <li>
     <span class="blog-date">June 5, 2026</span>
     <h2 class="blog-title"><a href="https://www.lesswrong.com/posts/zLERnZYLTPGqyfpqy/two-more-methods-for-consistency-training-and-some-new-ways-1">Two More Methods for Consistency Training and Some New Ways to Apply It</a></h2>
     <p class="blog-excerpt">Two consistency training methods that work at internal representation levels: MLPCT targets MLP hidden states with cosine distance, AttCT targets per-head attention distributions with Jensen-Shannon divergence. Across four threat models, representation-level methods work best for wrapper-induced failures with clear activation-space counterparts, while output-level BCT excels at trajectory-level threats like prefill attacks and adversarial frustration. The three representation-level methods converge on similar residual-stream fixes, while BCT finds a different one.</p>
