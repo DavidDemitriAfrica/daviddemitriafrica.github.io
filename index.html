@@ -71,7 +71,8 @@ description: "AI alignment researcher at UK AISI. Studying consistency training,
         canvas.style.width = width + 'px';
         canvas.style.height = height + 'px';
         canvas.style.borderRadius = '4px';
-        canvas.style.background = '#ebe5d9';
+        canvas.style.background = '#f6f5f2';
+        canvas.style.border = '1px solid #e2ded6';
         canvas.style.cursor = 'crosshair';
         ctx.scale(dpr, dpr);
 
@@ -260,7 +261,7 @@ description: "AI alignment researcher at UK AISI. Studying consistency training,
             time += 0.02;
 
             // Fade the previous frame to leave soft trails
-            ctx.fillStyle = 'rgba(235, 229, 217, 0.18)';
+            ctx.fillStyle = 'rgba(246, 245, 242, 0.18)';
             ctx.fillRect(0, 0, width, height);
 
             // Rebuild spatial grid

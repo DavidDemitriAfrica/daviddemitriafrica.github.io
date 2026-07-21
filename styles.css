@@ -1,14 +1,14 @@
 /* ===== DESIGN TOKENS ===== */
 :root {
-    --bg-primary:   #f5f0e6;
-    --bg-secondary: #ebe5d9;
+    --bg-primary:   #ffffff;
+    --bg-secondary: #f6f5f2;
     --text-primary:   #1a1a1a;
     --text-secondary: #4a4a4a;
     --text-muted:     #6b6b6b;
     --accent:         #8b4513;
     --accent-hover:   #5a2d0c;
     --accent-bg:      rgba(139, 69, 19, 0.06);
-    --border:         #d4cfc3;
+    --border:         #e2ded6;
 }
 
 /* ===== BASE ===== */
@@ -40,6 +40,10 @@ h3 { font-size: 1.15rem; margin: 0 0 0.25em; }
 
 p { margin: 0 0 1em; text-align: justify; }
 
+::selection {
+    background: rgba(139, 69, 19, 0.15);
+}
+
 /* ===== LINKS & TRIGGERS ===== */
 a, .trigger {
     cursor: pointer;
@@ -54,6 +58,12 @@ a:hover, a:focus,
     color: var(--accent-hover);
     border-bottom-color: var(--accent);
     background: var(--accent-bg);
+}
+
+a:focus-visible, .trigger:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 /* ===== HEADER & NAV ===== */

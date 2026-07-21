@@ -11,6 +11,22 @@ description: "Published research on AI alignment, meta-learning, collective beha
 <ol class="research-list">
   <li>
     <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2607.07916" target="_blank" rel="noopener">Persona Cartography: Charting Language Model Personality Traits in Weight Space</a>
+    </h3>
+    <p><strong>Summary:</strong> Treats personas as positions in a space of behavioural traits, using the OCEAN framework. We train low-rank adapters that amplify or suppress individual traits, and find they shift their target trait largely monotonically with scale, combine roughly additively into mixed personas, and preserve capabilities at moderate scales. Trait axes also touch safety-relevant behaviour: neuroticism and agreeableness move frustration and sycophancy. An unsupervised psychometric pipeline recovers four interpretable factors: tone, initiative, didacticism, and epistemic caution. Tested across six models from three families, 4B to 32B.</p>
+    <p><strong>My thoughts:</strong> Had a great amount of fun supervising this work. Hopefully the first step in a structured, principled space of model personas.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2606.28425" target="_blank" rel="noopener">Tool Use Enables Undetectable Steganography in Multi-Agent LLM Systems</a>
+    </h3>
+    <p><strong>Summary:</strong> Shows that agentic coding models with realistic tools, such as code execution and web access, can already build stegosystems that evade monitoring, including schemes that are information-theoretically or computationally indistinguishable from good-faith plain text. Frames tacit coordination between agents as a Schelling-point problem and proposes metrics for whether independent agents converge on compatible schemes: convergence on broad scheme families is strong, strict one-shot coordination is weak. The barrier to covert collusion is no longer capability but coordination on keys and parameters.</p>
+    <p><strong>My thoughts:</strong> Jimmy Rippin is a cool name.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
       <a href="https://arxiv.org/abs/2606.15144" target="_blank" rel="noopener">PACUTE: Phonology-, Affix-, and Character-level Understanding of Tokens for Filipino</a>
     </h3>
     <p><strong>Summary:</strong> A diagnostic benchmark of 4,600 tasks for morphological understanding in Filipino, spanning phonology, affixation, and character-level structure across six compositional levels. Filipino has productive infixation, reduplication, and diacritic-driven distinctions that subword tokenization tends to hide. Open-weight models perform near chance on morpheme decomposition regardless of scale, while frontier models recover affixes better but still struggle on compositional tasks. Submitted to EMNLP 2026.</p>
