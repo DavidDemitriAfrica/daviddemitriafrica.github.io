@@ -11,6 +11,30 @@ description: "Published research on AI alignment, meta-learning, collective beha
 <ol class="research-list">
   <li>
     <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2608.05086" target="_blank" rel="noopener">Item Response Theory for AI Safety</a>
+    </h3>
+    <p><strong>Summary:</strong> Applies item response theory, a psychometric toolkit for measuring latent traits from answers, to eight safety benchmarks across 192 language models. Three factors, refusal strictness, truthfulness, and contextual harm, explain most of the variation between models. Psychometrically selected items reproduce full benchmark scores much more cheaply, while model-level audits can detect naive sandbagging and changes to the model behind an API.</p>
+    <p><strong>My thoughts:</strong> Psychometrics has spent decades thinking about how to measure latent traits from answers. We should steal more from it. Fun working with Josh and Neil on this.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2607.27191" target="_blank" rel="noopener">Can AI agents conduct open-ended AI research? Early evidence from two case studies</a>
+    </h3>
+    <p><strong>Summary:</strong> Introduces shadow evaluations, where an agent tackles the central question of an unpublished paper and the original authors grade the result. Across two NeurIPS 2026 submissions, frontier agents completed the engineering without human help but made little progress on the actual research questions. They struggled with research judgment, recovering from dead ends, resource awareness, and instruction drift.</p>
+    <p><strong>My thoughts:</strong> Was a small part of this. I think the gap between being able to do the engineering and being able to tell what research is good is quite important.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2607.25750" target="_blank" rel="noopener">Detecting CSAM Text-to-Image LoRAs From Weights</a>
+    </h3>
+    <p><strong>Summary:</strong> Shows that potentially harmful text-to-image LoRAs can be screened directly from their weights, without trusting metadata or generating harmful outputs. Using human-subject age as a benign proxy for CSAM, the leading left singular vector of a LoRA's weight update acts as a compact fingerprint of what it learned. The signal generalizes across base models, abstains on unrelated content, and remains robust to several simple attempts to obscure it.</p>
+    <p><strong>My thoughts:</strong> First authored this. I think weight-based moderation is neat, especially when generating outputs to check what a model does would itself be harmful.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
       <a href="https://arxiv.org/abs/2607.07916" target="_blank" rel="noopener">Persona Cartography: Charting Language Model Personality Traits in Weight Space</a>
     </h3>
     <p><strong>Summary:</strong> Treats personas as positions in a space of behavioural traits, using the OCEAN framework. We train low-rank adapters that amplify or suppress individual traits, and find they shift their target trait largely monotonically with scale, combine roughly additively into mixed personas, and preserve capabilities at moderate scales. Trait axes also touch safety-relevant behaviour: neuroticism and agreeableness move frustration and sycophancy. An unsupervised psychometric pipeline recovers four interpretable factors: tone, initiative, didacticism, and epistemic caution. Tested across six models from three families, 4B to 32B.</p>
