@@ -1,0 +1,96 @@
+---
+layout: default
+title: "What Alignment Research Automation Should We Expect? - David Demitri Africa"
+description: "The bottleneck on alignment research is formalization and strategic judgment, not technical execution. As execution gets cheap, the returns to high-taste researchers and research infrastructure go up sharply."
+---
+
+<article class="note">
+  <span class="note-date">March 14, 2026</span>
+  <h1>What Alignment Research Automation Should We Expect?</h1>
+
+  <p><strong>Summary.</strong> The main bottleneck on alignment research is not technical execution, which AI is rapidly automating, but formalization and strategic judgment: turning fuzzy alignment concerns into precise tractable questions, and deciding which research directions matter. It seems clear that AI can assist with brainstorming formalizations but cannot yet substitute for the human judgment required to evaluate whether a formalization captures the right concern, and this is unlikely to change within 18 months. As execution costs sharply decline, the returns to senior researchers with good taste and direction-setting ability increase sharply. The field should stop funding for implementation capacity, invest heavily in high-taste researchers and the research infrastructure to leverage them, and watch for jagged burstiness in verification or reasoning that could suddenly make formalization work automatable too.</p>
+
+  <p>Our strategy requires us to make assumptions about when AI can do various types of alignment research. Thankfully, we've done a fair amount of thinking already about the pace of AI progress, and how it relates to R&D and our work.</p>
+
+  <h2>Carving up automation, and some key claims</h2>
+
+  <p>There are five properties that determine how quickly AI automates a research task: whether you can cheaply verify the output, whether the task is well specified, how fast and tight the feedback loop is, how much training data exists for that type of work, and how many domains need to be integrated. These tend to cluster together in ways that form natural categories.</p>
+
+  <h3>Category A. Specified technical execution (engineering-y work)</h3>
+
+  <p>Implementing a method from a paper, running an experiment with clearly defined parameters or following a spec, proving a lemma where the proof strategy is clear, processing data, and so on. For alignment-relevant things, it might be training an SAE on a specific layer with given hyperparameters, running a benchmark eval suite on a new model, or implementing a debate or control protocol from spec.</p>
+
+  <p>This is already being substantially automated and will be near-fully automated for most alignment-relevant tasks within 6&ndash;12 months. The evidence is pretty overwhelming and convergent: METR task horizons, IMO proof verification, labs self-reporting, and our own takes. We should basically not be hiring or funding primarily for this, and should instead hire people we can leverage to build tooling that takes advantage of this, or people who are great at being Claude-whisperers. We should possibly think about people in management, or who have otherwise thought hard about how systems of humans are orchestrated to do good things.</p>
+
+  <p><strong>Readout evidence.</strong> Per Person A at a frontier lab, the broad philosophy seems to be to get everyone to have AI do as much of their job as possible, supported by shared docs, tooling, and careful prompting. People iterate on the limits they hit and feed these back into training, run meta-automation experiments, and make demonstrations of AI doing tasks so humans can check them. Some safety groups are also investing heavily in compute and early-stage schemes for automating research. I think other frontier labs are likely to catch up, which may push race dynamics, buoyed by the belief that alignment problems will continue to be easy to identify, easy to solve, and solvable even if identified late. A frontier lab has also described its remaining blockers as insufficient context and insufficient tools, suggesting that further infrastructure could still produce relatively cheap automation gains.</p>
+
+  <p><strong>Quantitative evidence.</strong> The biggest points here are that METR is close to saturated (I think 14.5 hours is an overestimate, but still likely quite high), SWE-bench Verified is saturated, and SWE-bench Pro is readily and swiftly climbed with each model release (around 46% now, if I recall).</p>
+
+  <p><strong>Evidence that math/TCS may lag.</strong> Based on the difference between SWE-bench-X-type things and FrontierMath tiers (Tiers 1&ndash;3 at 50% for the best models, which is where SWE-bench Pro is), I can lightly say that scoped theory in maths is roughly as hard for AI as open-ended engineering. From this I'd make the tentative estimate that for well-scoped mathematical and theoretical execution, automation may lag empirical ML by ~6&ndash;12 months. If funding TCS-heavy work, we should expect human researchers to be essential for longer than in empirical ML.</p>
+
+  <p><strong>Some further work on METR task-horizon extrapolation.</strong> Current frontier task horizons are ~14.5 hours, though I think this is an overestimate.</p>
+  <ul>
+    <li><strong>Moderate case</strong> (assuming METR is right): doubling every ~129 days, the recent trend after METR's correction. By October 2026 (~6 months): ~2-day horizons. By April 2027 (~12 months): ~4&ndash;5-day horizons.</li>
+    <li><strong>Conservative case</strong> (the old trend): doubling every ~7 months (~210 days, METR's long-run headline figure). By October 2026: ~1.25-day horizons. By April 2027: ~2.5-day horizons.</li>
+    <li><strong>Aggressive case</strong>: doubling every ~90 days (faster than the current trend, reflecting some breakthroughs). By October 2026: ~4-day horizons. By April 2027: ~15&ndash;18-day horizons.</li>
+  </ul>
+  <p>The gap between the moderate and conservative cases is narrower than I thought. In the moderate case, week-ish-long autonomous tasks are feasible by mid-2027, so we can delegate open-ended empirical ML work to be fully automated, but not a full research cycle. In the aggressive case, researchers are managing mostly or entirely AIs by mid-2027.</p>
+
+  <h3>Category B. Open-ended technical work within a domain</h3>
+
+  <p>This looks like finding and deciding on a novel proof strategy, designing a new algorithm or adapting an experimental design to a new area, exploring a social phenomenon with known methods, running exploratory analysis, or extending a known technique to a new setting. In alignment, it might be interpreting what an SAE feature or circuit actually represents, exploring whether a technique could move into a new oversight protocol, designing a novel eval for a specific capability (sycophancy, steganography), proving a novel property of a debate protocol under new assumptions, or probing the loss landscape of a training run for phase transitions with alignment-relevant properties.</p>
+
+  <p>Domain matters somewhat here, as it depends on whether the data is readily available, or whether the problem has already been crisply translated to be LLM- and API-friendly. Person B thinks TCS is likely slower because it is hard to verify the step of abstracting things away, whereas in ML exploration brute force partially substitutes for human intuition pretty well. If this is true, we should expect academic mathematicians, theorists, and senior cognitive scientists to become much more productive. The returns to funding the right mathematicians go up by a lot, and this seems likely.</p>
+
+  <p><strong>Readout evidence.</strong> One frontier lab is quite high on scalable research, for example running many experiments on weak models rather than one expensive experiment on a large model, as a kind of brute-force elicitation of insights. But people there seem less optimistic about generalisation and task decomposition, which I think marks some of the B/C boundary. A frontier-lab debate project is a concrete case of B-type work proceeding slowly even with strong teams and access to automation; many potholes were hard to anticipate, such as juries being too correlated or the need for benchmarks and datasets to hill-climb on. This seems generalisable to other Category B problems: debate is a hard RL problem with multi-turn, path-dependent rollouts and a flawed, sparse reward signal, somewhat like auto-research loops. Person C points out that smart executors remain a key labour bottleneck, and there is uncertainty about how to get gains from orchestrating various agents.</p>
+
+  <p><strong>Quantitative evidence.</strong> Right now FrontierMath Tier 4 (week-long, research-level maths) has the best model (GPT-5.4 Pro) at 37.5%, up from ~10% a few months ago. Many teams now have IMO-gold-level reasoning models, but various benchmarks show LLMs are middling at open-ended, multi-step discovery. Open-ended research benchmarks are not saturated but climb readily: DiscoveryBench (latest was Sonnet 4.5 at ~25%, if I recall), MLE-bench (some ensemble of SOTA models at ~92%, though highly-intervened evolutionary harnesses with the latest Gemini model are at ~70%), DeepResearchBench at ~50%. This is a field where many people are actively producing more data, closing the reward loop, and exploring how to orchestrate agents, so we likely aren't hitting the wall now or soon.</p>
+
+  <p><strong>Evidence that math/TCS/cogsci may lag.</strong> METR task horizons and the like are benchmarked on SWE and RE tasks.</p>
+
+  <h3>Category C. Formalization, crispifying alignment concerns and technical frameworks</h3>
+
+  <p>This looks like turning a fuzzy concern into a precise tractable question, deciding what mathematical framework captures the right features of a problem, or designing an experiment that would tell you something important about a threat model. In alignment, what stands out: defining what "deceptive alignment" means precisely enough that you could write an eval for it and be confident the eval actually tests the right thing; formalizing what it means for model N to "align" model N+1, to the level of pseudocode for a protocol; figuring out whether "persona" should be formalized as a dynamical attractor, a latent factor, a cluster in activation space, or something else; judging what a safety case for scheming would need to demonstrate and what evidence would suffice; porting an economic mechanism-design idea into a concrete property of a scalable oversight protocol. Another example: a lab finding a subproblem in materials science and crispifying AI materials discovery for magnets.</p>
+
+  <p>I think this is where most of our agendas are actually bottlenecked. Three of five explicitly say they haven't found the right crisp questions. AI helps as a brainstorming partner (generate 20 possible formalizations and let me evaluate them) but for the foreseeable future cannot substitute for the judgment about which formalization captures the important concern. I'd expect modest improvement from AI sparring, something like 2x, but no real step change within 18 months.</p>
+
+  <p><strong>Readout evidence.</strong> Some takes from a frontier lab suggest that evaluating alignment may be fundamentally harder than producing aligned behaviour, and that hiring for theory research remains difficult. Some people at another frontier lab are working on RL for conceptually fuzzy tasks, though less clearly on the theory behind scalable oversight itself. It seems like key tasks such as writing safety assessments and making allocation decisions are themselves quite fuzzy, and may require qualitatively stronger arguments to bridge successive generations of systems. AISI has also put out work showing that Claude can over-refuse safety and alignment research, suggesting a blind spot: automation can silently avoid the very questions that formalization is meant to expose.</p>
+
+  <p><strong>Quantitative evidence.</strong> Thin! Someone should tell me if there are good benchmarks that target formalization capabilities.</p>
+
+  <h3>Category D. Conceptual and strategic judgment</h3>
+
+  <p>This looks like research-lead-shaped things: evaluating whether a research direction is worth pursuing, deciding what the field should focus on, synthesizing across a body of work to update threat models, setting research agendas. In alignment: whether we should worry more about human persuasion or CB; synthesizing across different pieces of evidence to assess how trustworthy a model is; assessing whether a proposed auto-alignment protocol would work in a regime that is useful to us.</p>
+
+  <p>This is our team's core function and, I suspect, the last thing to be automated. AI helps at the margins, and possibly our readout from automated risk modeling would change this, but I expect the judgments themselves to require integration across technical, empirical, philosophical, and institutional knowledge that is hard.</p>
+
+  <p><strong>Readout evidence.</strong> The evidence here is mostly negative, pointing at what has not been claimed despite projected automation of empirical ML. Some takes from a frontier lab identify research taste and judgment about what to pursue as the main remaining bottleneck. Others suggest the field is bottlenecked by founders and would benefit from ambitious bets at smaller scale; a more speculative view is that human judgment may stop outperforming AI sooner than expected. Threat modelling remains hard and unusually dependent on tacit judgment. Another line of argument is that safety cases may nonetheless be reasonably verifiable through several independent lines of evidence. This seems important: if true, then D-type work is less important and we mostly need to weigh and assemble B/C-type evidence; if wrong, then D remains irreducible and central. The optimistic case I heard was less that D-type work would be automated than that it might not be necessary. We may need conceptual red-teaming.</p>
+
+  <h2>Cruxy claims</h2>
+
+  <p>Here are the claims that may be cruxy and important to how I carved these out:</p>
+  <ol>
+    <li>There are structural task properties, such as verifiability and specification, that scaling alone will find hard to overcome.</li>
+    <li>The main bottleneck on our agendas is formalization rather than execution.</li>
+    <li>Research taste and alignment-specific judgment won't be substantially automated within 18 months.</li>
+    <li>Returns to good direction-setting increase as execution gets cheaper.</li>
+  </ol>
+
+  <p>One other thing: from this, I've judged that we should build research infrastructure now. We'll want to squeeze out as much as we can from senior taste and talent, to leverage high-quality prosaic alignment research in the speedy, bursty, pre-crunch-time era. It seems like we should be hiring tons of high-taste people, though I hold this at low confidence.</p>
+
+  <h2>Jagged bursts and discontinuities</h2>
+
+  <p>I have some key uncertainties; things could change instantly where a particular overhang collapses on top of us. A few, and how each interacts with our agenda:</p>
+
+  <p><strong>New modalities becoming load-bearing.</strong> Current research assistance is text-based, but I claim rich underexploited signal exists in vision (diagrams, data visualizations, loss landscapes, activation patterns), interactive tool use (exploring codebases, model internals, mathematical structures), and audio (research discussions). We're seeing more of this now from tool use and RLMs, and there's a huge amount we're not properly integrating. When we do, I expect a jagged jump for Category B work: imagine AI that visually explores training dynamics for DevInterp, interactively maps representation spaces for personas, processes whiteboard sketches of proof ideas for scalable oversight, and pair-programs with you in the room, responding to little ticks. This could arrive with little warning.</p>
+
+  <p><strong>Breakthroughs in verification for alignment things.</strong> The biggest single accelerant for Categories C and D would be new ways to check alignment-relevant claims, e.g. tools that rapidly generate empirical predictions from formalizations. This crispifies a whole category of work, compresses feedback loops, and moves formalization work from C toward B.</p>
+
+  <p><strong>RL generalization across domains.</strong> There's a kind of all-of-a-sudden point, where LLMs were bad at language and then got good all at once; there could be such a point in reasoning in general. Taste might simply be a product of reasoning, search space, and logical induction, e.g. taste as the vanishing horizon where we humans make simple intuitive leaps but it's actually quite searchable. This type of thing is hard to verify.</p>
+
+  <h2>So, what to do?</h2>
+
+  <p>In-house, I think we should concentrate on C and D, and build tooling to offload A. That seems to be our comparative advantage. In grantmaking and academia, we should fund for B and C, not A. Tooling is good. And we should test frontier models on TCS tasks, on risk modelling, on crispification, and on generating research directions and rating them on taste, though these last recommendations I hold at low confidence.</p>
+
+  <p class="note-back"><a href="/blog.html">&larr; Back to Notes and Posts</a></p>
+</article>
