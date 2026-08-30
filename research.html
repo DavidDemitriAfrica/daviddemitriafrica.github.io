@@ -11,6 +11,14 @@ description: "Published research on AI alignment, meta-learning, collective beha
 <ol class="research-list">
   <li>
     <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2608.21664" target="_blank" rel="noopener">Measuring Activation Control in Large Language Models</a>
+    </h3>
+    <p><strong>Summary:</strong> Introduces the Activation Controllability Benchmark, which measures whether models can deliberately modulate their residual-stream activations while completing a simple task. Across 25 open-weight models from 4B to 744B parameters, most can increase the salience of a concept, dial its strength, and confine it to parts of an output, but cannot reliably suppress it below baseline or target a specific layer. On simple tasks, this control can partially evade linear probes, natural language autoencoders, activation oracles, and the Jacobian lens. Controllability varies widely and does not track model size or general capability.</p>
+    <p><strong>My thoughts:</strong> Advised this with Uzay. Marek and Josh did a great job turning a fuzzy concern about models having &ldquo;write access&rdquo; to their own activations into an actual benchmark.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
       <a href="https://arxiv.org/abs/2608.05086" target="_blank" rel="noopener">Item Response Theory for AI Safety</a>
     </h3>
     <p><strong>Summary:</strong> Applies item response theory, a psychometric toolkit for measuring latent traits from answers, to eight safety benchmarks across 192 language models. Three factors, refusal strictness, truthfulness, and contextual harm, explain most of the variation between models. Psychometrically selected items reproduce full benchmark scores much more cheaply, while model-level audits can detect naive sandbagging and changes to the model behind an API.</p>
