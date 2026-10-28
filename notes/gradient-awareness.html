@@ -8,8 +8,6 @@ description: "An experimental design for treating the activation gradient as a s
   <span class="note-date">January 12, 2026</span>
   <h1>What does a gradient feel like? Or: Gradient Awareness</h1>
 
-  <p><strong>What does a gradient feel like? Or: Gradient Awareness.</strong></p>
-
   <p><strong>Context:</strong> In ongoing work, we have some pretty good evidence that models can be fine-tuned to act as reliable discriminators for their own activation perturbations. That is, they can classify and describe steering vectors added to their residual stream. I think we can naturally extend this to <strong>Gradient Awareness.</strong> Can a model introspect on the update signal itself? If a steering vector is a static intervention, a gradient is a dynamic instruction, or a vector that encodes &ldquo;how to be less wrong.&rdquo;</p>
 
   <p>This entails some finnicky engineering, where you want to treat the gradient not as an optimizer utility, but also as a sensory input. The experiment tests if a model can interpret the gradient of the loss with respect to its own activations as a semantic instruction.</p>

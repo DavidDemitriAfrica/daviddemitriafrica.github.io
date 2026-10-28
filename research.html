@@ -12,16 +12,42 @@ description: "Published research on AI alignment, meta-learning, collective beha
 <ul class="research-list">
   <li>
     <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2610.24969" target="_blank" rel="noopener">Towards Human-AI Complementarity for AI Safety</a>
+    </h3>
+    <p><strong>Summary:</strong> Can you combine human and AI judgements in simple ways to improve oversight of safety-relevant tasks? We introduce a new benchmark of such tasks with headroom, compiling and augmenting existing datasets. We find that there is huge potential for complementarity but that all approaches we tried either failed to make use of this potential, or made the humans less effective as an independent source of information.</p>
+    <p class="research-thoughts"><strong>My thoughts:</strong> Seems really important to figure out how to augment humans without making them more correlated with the machines. This was a huge SPAR project co-supervised with Rishub, Josh, and Kozzy.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2610.22460" target="_blank" rel="noopener">Functional Welfare for AI Safety</a>
+    </h3>
+    <p><strong>Summary:</strong> We argue that welfare-like states in models are likely to emerge, should be seriously considered in evaluations, and can be fruitfully studied with serious empirics.</p>
+    <p class="research-thoughts"><strong>My thoughts:</strong> This was fun. Enjoyed working on this with a lean, cracked squad.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
+      <a href="https://arxiv.org/abs/2609.38093" target="_blank" rel="noopener">Character Training for Risk-Averse Agents</a>
+    </h3>
+    <p><strong>Summary:</strong> Making agents risk averse might be a good way to reduce risk from misaligned ASI. We find that character training improves generalisation over baselines. Of the factors varied, token budget and model choice had the largest effect.</p>
+    <p class="research-thoughts"><strong>My thoughts:</strong> I was excited to do this because risk aversion is a verifiable target to do principled study of how to do character training well. I'm still unsure if we eventually want ASI to be risk-averse (h/t Alex Mallen for good points) if it's eventually aligned. An opportunistic paper born out of collaboration with Arcadia.</p>
+  </li>
+
+  <li>
+    <h3 class="research-title">
       <a href="https://arxiv.org/abs/2609.20412" target="_blank" rel="noopener">Stress-testing Alignment Midtraining</a>
     </h3>
-    <p><strong>Summary:</strong> Tests the assumptions behind alignment midtraining, which continues pretraining on alignment-relevant documents, with models of up to 110B parameters and up to 1B midtraining tokens. Midtraining can steer a model's motivation when post-training data is ambiguous between two motivations, but a tiny amount of finetuning data that suggests a competing motivation erases the effect. Rules are only learned robustly when they are demonstrated in either the midtraining or the post-training data.</p>
+    <p><strong>Summary:</strong> Stress-tests alignment midtraining with models of up to 110B parameters and 1B midtraining tokens. Midtraining can steer a model's motivation when post-training data is ambiguous, but a tiny amount of finetuning data suggesting a competing motivation erases the effect, and rules are only learned robustly when demonstrated in the midtraining or post-training data.</p>
+    <p class="research-thoughts"><strong>My thoughts:</strong> It's important to get open evidence and shared ontologies for mysterious and obscure alignment methods like alignment midtraining. Done w Arcadia folk.</p>
   </li>
 
   <li>
     <h3 class="research-title">
       <a href="https://arxiv.org/abs/2609.15886" target="_blank" rel="noopener">Inoculation Midtraining with Learned Neologisms</a>
     </h3>
-    <p><strong>Summary:</strong> Midtrains a base model to associate unsafe behaviour with a new &lt;quarantine_token&gt; context, then post-trains it on unsafe data inside that context and evaluates it outside. Across supervised fine-tuning and reinforcement learning, this reduces misalignment while keeping benign properties of the training data, such as writing in German or Shakespearean prose. It does not beat standard inoculation prompting, is sensitive to training configuration, and leaves a leaky boundary that nearby contextual cues can reactivate.</p>
+    <p><strong>Summary:</strong> Midtrains a base model to associate unsafe behaviour with a new &lt;quarantine_token&gt; context, then post-trains it on unsafe data inside that context and evaluates it outside. This reduces misalignment while keeping benign properties of the training data, but does not beat standard inoculation prompting, is sensitive to training configuration, and leaves a leaky boundary that nearby cues can reactivate.</p>
+    <p class="research-thoughts"><strong>My thoughts:</strong> Inoculation midtraining seems promising and natural, but has limitations. Was ultimately finicky. Done w Geodesic folk.</p>
   </li>
 
   <li>
